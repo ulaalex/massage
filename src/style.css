@@ -1,0 +1,198 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url("./assets/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+    font-family: PoppinsBold;
+    src: url("./assets/fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+    font-family: Reey;
+    src: local('Reey'), url("./assets/fonts/Reey-Regular.otf");
+}
+
+@font-face {
+    font-family: Сenturygothic;
+    src: url("./assets/fonts/centurygothic.ttf");
+}
+
+@font-face {
+    font-family: СenturygothicBold;
+    src: url("./assets/fonts/centurygothic_bold.ttf");
+}
+
+body {
+    background-color: rgb(223, 97, 33);
+    font-size: 12px;
+}
+
+#main {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1440px;
+    background-image: url("./assets/images/Background.png");
+    background-size: cover;
+    user-select: none;
+    z-index: 1;
+}
+
+#main-container {
+    max-width: 707px;
+    margin: 0 40px 0 auto;    
+}
+
+header {
+    padding-top: 50px;   
+}
+
+.menu {
+    display: flex;
+    height: 48.03px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.menu a:nth-child(2) {
+    flex-shrink: 0;
+}
+
+.menu a {
+    font-size: 2.1em;
+    font-family: "Poppins", sans-serif;
+    color: rgba(158, 134, 92, 0.62);    
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    border-bottom: 3px solid rgb(189, 134, 63);
+}
+
+.menu img {
+    height: 25px;
+    width: 35px;
+    padding: 5px 10px;    
+}
+
+.menu img:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.main-info {
+    margin-top: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.title {
+
+    font-size: 7em;
+    font-family: "PoppinsBold", sans-serif;
+    color: rgb(158, 141, 135);
+    line-height: 1.043; 
+}
+
+.title span {
+    display: inline-block;
+    letter-spacing: 0.235em;
+    width: 100%;
+}
+
+.directions {
+    margin-top: 17.5px;    
+    font-size: 6em;
+    font-family: "Reey", sans-serif;
+    color: rgb(189, 134, 63);
+}
+
+.description {
+    margin-top: 35px;    
+    font-size: 2em;
+    font-family: "Сenturygothic", sans-serif;
+    color: rgb(158, 141, 135);
+    line-height: 1.35;
+    text-align: left;
+}
+
+#button-more {
+    margin-top: 30px;
+    background-color: rgb(189, 134, 63);
+    border-radius: 40px;
+    border: 0px;
+    font-size: 2em;
+    font-family: "СenturygothicBold", sans-serif;
+    color: white;
+    width: 300px;
+    height: 65px;
+}
+
+.background-mask {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    width: calc(100% - 400px);
+    min-height: 892.061px;
+    z-index: -1;
+}
+
+.photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 892.061px;
+    z-index: -1;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-bottom: 15px;
+}
+
+.logo-social {
+    display: inline-block;
+}
+
+.logo-social a {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.logo-social a img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.logo-name-mobile {
+    display: none;
+}
+
+.logo-name {
+    display: inline-block;
+}
+
+.logo-name img {
+    width: 100px;
+    height: 80px;
+    vertical-align: middle;
+}
+
+.footer-information {
+    display: inline-block;
+    font-size: 1.2em;
+    font-family: "Сenturygothic", sans-serif;
+    color: rgb(158, 141, 135);
+}

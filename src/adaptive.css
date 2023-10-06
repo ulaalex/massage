@@ -1,0 +1,151 @@
+@media screen and (max-width: 1439px) {
+    * {
+        outline: 2px solid red;
+    }
+
+    #main-container {
+        max-width: calc(707px + 0.40144 * (100vw - 1440px));
+    }
+
+    .background-mask {
+        left: calc(400px + 0.4806 * (100vw - 1440px));
+        width: calc(100% - (400px + 0.4806 * (100vw - 1440px)));
+    }
+
+    .photo {
+        left: calc(0.4806 * (100vw - 1440px));
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #main-container {
+        max-width: 600px;
+        margin-left: 40px;
+        margin-right: auto;
+    }
+
+    .background-mask {
+        left: 0;
+        width: 90%;
+        transform: scale(-1, 1);
+    }
+
+    .photo {
+        left: auto;
+        right: -100px;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    #main-container {
+        margin: 0 auto;
+    }
+
+    .photo {
+        display: none;
+    }
+
+    .background-mask {
+        left: -150px;
+        width: calc(100% + 150px);
+        transform: scale(1, 1);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: calc(12px + (0.011696 * (100vw - 767px)));
+    }
+
+    #main-container {
+        padding: 0 10px;
+    }
+
+    header {
+        padding-top: 20px;
+    }
+
+    .menu img {
+        height: calc(25px + (0.011696 * (100vw - 767px)));
+        width: calc(35px + (0.01637 * (100vw - 767px)));
+        padding: 2px 5px;
+    }
+
+    .logo-name img {
+        width: 80px;
+        height: 64px;
+    }
+
+    footer {
+        padding-bottom: 20px;
+    }
+
+    .background-mask {
+        min-height: 100%;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    #main-container {
+        padding: 0 5px;
+    }
+
+    header {
+        padding-top: 10px;
+    }
+
+    footer {
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    header {
+        font-size: calc(7.4px + (0.015 * (100vw - 374px)));
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        height: 65px;
+    }
+
+    .menu img {
+        order: 1;
+        margin-right: calc(100% - 28px - 10px);
+        height: 20px;
+        width: 28px;
+    }
+
+    .menu a {
+        order: 2;
+    }
+
+    #button-more {
+        scale: 0.7;
+        transform-origin: left top;
+        font-size: 3em;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer>* {
+        margin: 10px auto;
+    }
+
+    .logo-name {
+        display: none;
+    }
+
+    .logo-name-mobile {
+        display: inline-block;
+    }
+
+    .logo-name-mobile img {
+        width: 200px;
+        height: 80px;
+        vertical-align: middle;
+    }
+}
