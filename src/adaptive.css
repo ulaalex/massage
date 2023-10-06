@@ -135,6 +135,16 @@
         margin: 10px auto;
     }
 
+    .logo-social {
+        display: flex;
+        width: 140px;
+        justify-content: space-between;
+    }
+
+    .logo-social a {        
+        margin-right: 0;
+    }
+
     .logo-name {
         display: none;
     }
