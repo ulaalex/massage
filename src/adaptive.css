@@ -152,4 +152,8 @@
         height: 80px;
         vertical-align: middle;
     }
+
+    .footer-information {        
+        text-align: center;
+    }
 }

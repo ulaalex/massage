@@ -1,61 +1,76 @@
 const path = require('path'); // Импортируем модуль "path" для работы с путями файлов
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js', // Точка входа для сборки проекта
+  entry: './src/index.js', // Точка входа для сборки проекта
 
-    output: {
-        filename: 'bundle.js', // Имя выходного файла сборки
-        path: path.resolve(__dirname, 'dist'), // Путь для выходного файла сборки
+  output: {
+    filename: 'bundle.js', // Имя выходного файла сборки
+    path: path.join(__dirname, 'dist'), // Путь для выходного файла сборки
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+
+      {
+        test: /\.(woff2?|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+
+      {
+        test: /\.css$/, // Регулярное выражение для обработки файлов с расширением .css
+        use: [MiniCssExtractPlugin.loader, 'css-loader'], // Загрузчики, используемые для обработки CSS-файлов
+        generator: {
+                     filename: '[name].[contenthash][ext]',
+                   },
+      },
+    ],
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
+
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'), // Каталог для статики
     },
+    open: true, // Автоматически открывать браузер
+  },
 
-    module: {
-        rules: [
-            {
-                test: /\.html$/i,
-                use: 'html-loader',
-            },
+  optimization: {
+    minimizer: [
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ['gifsicle', { interlaced: true }],
+              ['jpegtran', { progressive: true }],
+              ['optipng', { optimizationLevel: 5 }],
+              ['svgo', { name: 'preset-default' }],
+            ],
+          },
+        },
+      }),
+    ],
+  },
 
-            {
-                // If you enable `experiments.css` or `experiments.futureDefaults`, please uncomment line below
-                // type: "javascript/auto",
-                test: /\.(sa|sc|c)ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    "css-loader",
-                ],
-                generator: {
-                              filename: '[name].[contenthash][ext]',
-                            },
-            },
 
-            {
-                test: /\.(png|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-            },
-
-            {
-                test: /\.(woff2?|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-            },
-        ],
-    },
-
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-        }),
-
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-        })],
-
-    devServer:
-    {
-        watchFiles: path.join(__dirname, 'src'),
-        port: 9000,
-    },    
 };

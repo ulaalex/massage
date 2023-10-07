@@ -140,7 +140,7 @@ header {
     top: 0;
     left: 400px;
     width: calc(100% - 400px);
-    min-height: 892.061px;
+    min-height: 893.5px;
     z-index: -1;
 }
 
@@ -149,7 +149,7 @@ header {
     top: 0;
     left: 0;
     width: 700px;
-    height: 892.061px;
+    height: 893.5px;
     z-index: -1;
 }
 
@@ -195,5 +195,4 @@ footer {
     font-size: 1.2em;
     font-family: "Сenturygothic", sans-serif;
     color: rgb(158, 141, 135);
-    text-align: center;
 }
