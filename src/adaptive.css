@@ -1,8 +1,4 @@
 @media screen and (max-width: 1439px) {
-    * {
-        outline: 2px solid red;
-    }
-
     #main-container {
         max-width: calc(707px + 0.40144 * (100vw - 1440px));
     }
@@ -115,6 +111,7 @@
         margin-right: calc(100% - 28px - 10px);
         height: 20px;
         width: 28px;
+        padding: 2px 10px;
     }
 
     .menu a {
@@ -129,10 +126,7 @@
 
     footer {
         flex-direction: column;
-    }
-
-    footer>* {
-        margin: 10px auto;
+        gap: 15px
     }
 
     .logo-social {
@@ -141,7 +135,7 @@
         justify-content: space-between;
     }
 
-    .logo-social a {        
+    .logo-social a {
         margin-right: 0;
     }
 
