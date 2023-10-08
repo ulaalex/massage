@@ -135,6 +135,12 @@ header {
     height: 65px;
 }
 
+#button-more:hover {
+    cursor: pointer;
+    scale: 1.01;
+    background: radial-gradient(circle, rgba(189,134,63,1) 29%, rgba(194,194,181,1) 100%);
+}
+
 .background-mask {
     position: absolute;
     top: 0;
