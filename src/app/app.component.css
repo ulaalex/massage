@@ -29,6 +29,7 @@
     max-width: 1440px;
     background-image: url("../assets/images/Background.png");
     background-size: cover;
+    font-size: 12px;
     user-select: none;
     z-index: 1;
 }

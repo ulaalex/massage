@@ -50,7 +50,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    body {
+    #main {
         font-size: calc(12px + (0.011696 * (100vw - 767px)));
     }
 
