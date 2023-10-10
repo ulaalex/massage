@@ -118,12 +118,6 @@
         order: 2;
     }
 
-    #button-more {
-        width: 210px;
-        height: 45.5px;        
-        font-size: 3em;
-    }
-
     footer {
         flex-direction: column;
         gap: 15px
