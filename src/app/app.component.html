@@ -4,16 +4,16 @@
 
     <header>
       <nav class="menu">
-        <a href="" class="nav-item">Home</a>
-        <a href="" class="nav-item">About Us</a>
-        <a href="" class="nav-item">Service</a>
-        <a href="" class="nav-item">Contact</a>
+        <a routerLink="" class="nav-item">Home</a>
+        <a routerLink="/about-us" class="nav-item">About Us</a>
+        <a routerLink="/service" class="nav-item">Service</a>
+        <a routerLink="/contact" class="nav-item">Contact</a>
         <img src="assets/images/Shape.png" alt="Menu" onclick="">
       </nav>
     </header>
 
     <section class="main-info">
-      <app-home class="component"></app-home>
+      <router-outlet class="component"></router-outlet>
     </section>
 
     <footer>

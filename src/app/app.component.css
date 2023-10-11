@@ -79,15 +79,8 @@ header {
     scale: 1.1;
 }
 
-.main-info {
+.main-info {      
     margin-top: 40px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    user-select: text;
-}
-
-.component {
-    display: block;
 }
 
 .background-mask {

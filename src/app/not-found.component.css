@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    min-height: 573.5px;
+    padding-top: 60px;    
+    user-select: text;
+    font-size: 3em;
+    font-family: "PoppinsBold", sans-serif;
+    color: rgb(158, 141, 135);
+    line-height: 1.1;
+}
+
+.title span {
+    display: inline-block;    
+    width: 100%;
+    font-size: 2em;
+    margin-bottom: 50px;
+}
