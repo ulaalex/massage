@@ -55,17 +55,34 @@ header {
 }
 
 .menu a {
+    position: relative;
     font-size: 2.1em;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: rgba(158, 134, 92, 0.62);
     padding: 5px 10px;
     text-decoration: none;
-    border-bottom: 3px solid rgba(189, 134, 63, 0);
 }
 
-.menu a:hover {
-    border-bottom: 3px solid rgb(189, 134, 63);
+.menu a::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    bottom: 0;
+    display: block;
+    width: 0%;
+    height: 3px;
+    transform: translateX(-50%);
+    transition: .3s;
+    background: rgba(158, 134, 92, 0.62);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu a.active::after {
+    width: 100%;
 }
 
 .menu img {
@@ -79,7 +96,7 @@ header {
     scale: 1.1;
 }
 
-.main-info {      
+.main-info {
     margin-top: 40px;
 }
 
