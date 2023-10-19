@@ -1,0 +1,5 @@
+@media screen and (max-width: 374px) {
+    :host {
+        min-height: 410.5px;
+    }
+}

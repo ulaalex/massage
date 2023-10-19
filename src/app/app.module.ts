@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
+import { ContactComponent } from './contact.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NotFoundComponent } from './not-found.component';
     AppComponent,
     HomeComponent,
     NotFoundComponent,    
+    ContactComponent,    
   ],
   imports: [
     BrowserModule,

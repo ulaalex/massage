@@ -54,8 +54,7 @@
     transition: background-size 0.7s;
 }
 
-#button-more:hover {
-    cursor: pointer;
+#button-more:hover {  
     scale: 1.01;
     background-image: radial-gradient(circle, rgba(189, 134, 63, 1) 29%, rgb(191, 175, 148) 100%);
     background-size: 100%;

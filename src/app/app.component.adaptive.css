@@ -103,7 +103,7 @@
 
     .menu {
         flex-wrap: wrap;
-        height: 65px;
+        height: 50px; /* 65px при отображении */
     }
 
     .menu img {
