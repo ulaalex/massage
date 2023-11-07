@@ -1,1 +1,0 @@
-vc-domain-verify=dbm-grodno.v.app,046e747bc3625fce2b1a
