@@ -2,3 +2,135 @@
     padding: 0;
     margin: 0;
 }
+
+@keyframes WidgetContainer_OPEN_WIDGET {
+    0% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(100%);
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+
+    10% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(calc(100% - 40px));
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+
+    99% {
+        width: 336px;
+    }
+
+    to {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jright, --jlabelright);
+        transform: translateY(0);
+        width: 336px;
+        z-index: 2147483646;
+    }
+}
+
+@keyframes WidgetContainer_CLOSE_WIDGET {
+    0% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jright, --jlabelright);
+        transform: translateY(0);
+        width: 336px;
+        z-index: 2147483646;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    90% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(calc(100% - 40px));
+        width: var(--jlabelwidth, 336px);
+        z-index: 2147483646;
+    }
+
+    to {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(100%);
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+}
+
+
+@keyframes Label_OPEN_WIDGET {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes Label_CLOSE_WIDGET {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes OPEN_WIDGET {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    100% {
+        display: initial;
+        opacity: 1;
+    }
+}

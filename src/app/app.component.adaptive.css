@@ -31,6 +31,14 @@
         right: -100px;
         max-width: 100%;
     }
+
+    #main:has(.about) {
+        .background-mask {
+            left: -300px;
+            width: calc(100% + 300px);
+            transform: scale(1, 1);
+        }
+    }
 }
 
 @media screen and (max-width: 899px) {
@@ -103,7 +111,8 @@
 
     .menu {
         flex-wrap: wrap;
-        height: 50px; /* 65px при отображении */
+        height: 50px;
+        /* 65px при отображении */
     }
 
     .menu img {

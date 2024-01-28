@@ -123,8 +123,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 25px;
-    padding-bottom: 15px;
+    margin-top: 5px;
+    padding-bottom: 35px;
 }
 
 .logo-social {
@@ -161,4 +161,23 @@ footer {
     font-size: 1.2em;
     font-family: "Сenturygothic", sans-serif;
     color: rgb(158, 141, 135);
+}
+
+
+
+#main:has(.about) {
+    /* #main-container {
+        margin-left: auto;
+        margin-right: auto;
+    } */
+
+    .photo {
+        display: none;
+    }
+
+    .background-mask {
+        height: 100%;
+        left: -300px;
+        width: calc(100% + 300px);
+    }    
 }

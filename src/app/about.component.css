@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    user-select: text;
+}
+
+.information {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 5em;
+    font-family: "PoppinsBold", sans-serif;
+    color: rgb(158, 141, 135);
+    margin-bottom: 25px;
+}
+
+.text {
+    font-family: "Сenturygothic", sans-serif;
+    font-size: 2em;
+    color: rgb(158, 141, 135);
+    line-height: 1.1;
+    list-style-position: inside;
+}
+
+.text span {
+    font-size: 0.8em;
+}
+
+.information img {
+    display: block;
+    width: 37%;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.text-fon {
+    display: block;
+    border: 2px solid red;    
+    width: 100%;
+    font-size: 10em;
+    font-family: "PoppinsBold", sans-serif;
+    color: rgb(158, 141, 135);
+    overflow: hidden;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+.text-fon span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: 15s linear infinite running scroll;    
+}
