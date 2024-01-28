@@ -88,7 +88,7 @@ export class Wid {
                     messages.scrollIntoView({ behavior: "smooth", block: "end" });
                 } else if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
                     console.log(`Соединение закрыто. Попытка повторного подключения ${reconnectAttempts + 1}`);
-                    setTimeout(() => tryToConnect(), 2000); // повторное подключение через 1 секунду
+                    setTimeout(() => tryToConnect(), 2000); // повторное подключение через 2 секунды
                     reconnectAttempts++;
                 } else {
                     console.log('Соединение закрыто. Слишком много попыток соединения. Соединение невозможно, попробуйте позже');
@@ -225,7 +225,8 @@ export class Wid {
 
 
             document.getElementById('substrate_header').addEventListener('mousedown', function (e) {
-                // document.querySelector("*").setAttribute("style", "cursor: move !important");
+                document.getElementById('substrate_header').classList.add("wrap_substrate_active");
+                document.querySelector('.scroll_message').style.display = "none";
                 let mousePreviousPositionX = e.clientX;
                 const widthWindow = document.documentElement.clientWidth;
                 const distanceToRightJcont = - e.clientX - +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') + widthWindow;
@@ -274,6 +275,8 @@ export class Wid {
                 }
 
                 function removeOnMouseMoveY() {
+                    document.getElementById('substrate_header').classList.remove("wrap_substrate_active");
+                    document.querySelector('.scroll_message').style.display = "block";
                     document.removeEventListener('mousemove', onMouseMoveY);
                 }
 
