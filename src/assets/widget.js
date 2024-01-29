@@ -25,6 +25,7 @@ export class Wid {
 
 
             class Message {
+                userAvatar = "";
                 constructor(type, messageContent, userName = '', actionOnMessage) {
                     this.type = type;
                     this.messageContent = messageContent;
@@ -130,6 +131,11 @@ export class Wid {
                     const agentName = document.createTextNode(message.userName);
                     const timeNow = new Date;
                     const timeNewContent = document.createTextNode(`${timeNow.getHours()}` + ":" + `${timeNow.getMinutes()}`);
+
+
+                    if (message.userAvatar) {
+                       fragment_messageInput.querySelector('.avatarImg_messageInput').style.setProperty('background-image', `url(${message.userAvatar})`);
+                    }
 
 
                     fragment_messageInput.querySelector('.text_messageInput').prepend(newContent);
