@@ -83,7 +83,7 @@ export class Wid {
             function onSocketClose(event) {
                 console.log(`Код закрытия: ${event.code}`);
                 document.getElementById("exit_dialog").style.display = "none";
-                if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours") {
+                if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours" || event.reason === "timeout") {
                     messages.appendChild(startDialogue);
                     startDialogue.style.setProperty('display', 'block');
                     messages.scrollIntoView({ behavior: "smooth", block: "end" });

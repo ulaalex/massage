@@ -1,23 +1,49 @@
 <div id="main">
 
-  <div id="main-container">
 
-    <header>
+
+  <header>
+    <div id="main-container">
       <nav class="menu">
         <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">Home</a>
-        <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">About Us</a>
-        <a routerLink="/service" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">Service</a>
-        <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">Contact</a>
+        <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">About
+          Us</a>
+        <a routerLink="/service" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          class="nav-item">Service</a>
+        <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          class="nav-item">Contact</a>
         <img src="assets/images/Shape.png" alt="Menu">
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <section class="main-info">
+  <section class="main-info">
+    <div id="main-container">
       <router-outlet class="component"></router-outlet>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <div class="logo-social">
+  <footer>
+    <div class="f-main_menu">
+      <div class="main_menu">
+        <a routerLink="" class="f-main_element"><span>Home</span></a>
+        <a routerLink="/about" class="f-main_element"><span>About Us</span></a>
+        <a routerLink="/service" class="f-main_element"><span>Service</span></a>
+        <a routerLink="/contact" class="f-main_element"><span>Contact</span></a>
+        <a routerLink="/learn-more" class="f-main_element"><span>Learn More</span></a>
+      </div>
+
+      <div class="other_menu">
+        <a routerLink="" class="f-main_element"><span>Home</span></a>
+        <a routerLink="/about" class="f-main_element"><span>About Us</span></a>
+        <a routerLink="/service" class="f-main_element"><span>Service</span></a>
+        <a routerLink="/contact" class="f-main_element"><span>Contact</span></a>
+        <a routerLink="/learn-more" class="f-main_element"><span>Learn More</span></a>
+      </div>
+    </div>
+
+    <div class="f-main f-main_logo">
+      <div class="logo-social f-main_element">
         <a href="https://www.instagram.com/dream_body_massagegrodno/" target="_blank"><img
             src="assets/images/free-icon-instagram-3955024.png" alt="Instagram"></a>
         <a href="viber://chat?number=%2B375257252263" target="_blank"><img
@@ -25,12 +51,29 @@
         <a href="https://wa.me/375257252263" target="_blank"><img src="assets/images/free-icon-whatsapp-3670051.png"
             alt="Чат с пользователем WhatsApp"></a>
       </div>
-      <div class="logo-name"><img src="assets/images/logo.png" alt="Dream Body Massage"></div>
-      <div class="logo-name-mobile"><img src="assets/images/logo-name.png" alt="Dream Body Massage"></div>
-      <div class="footer-information">Гродно, Dream Body Massage<br>Все права защищены</div>
-    </footer>
+      <div id="phone" class="block f-main_element"><a href="tel:+375257252263">+375(25) 725-22-63</a></div>
+      <div class="logo-name f-main_element"><img src="assets/images/logo.png" alt="Dream Body Massage"></div>
+      <div class="logo-name-mobile f-main_element"><img src="assets/images/logo-name.png" alt="Dream Body Massage">
+      </div>
+      <div class="footer-information f-main_element">Гродно, Dream Body Massage<br>Все права защищены</div>
+    </div>
 
-  </div>
+
+    <div class="f-main f-main_information">
+      <div class="f-main_element footer-information">
+        Эффективный массаж<br>
+        Медицинское образование<br>
+        Мастер с огромной любовью к своему делу!<br>
+        <br>
+        Адрес: проспект Космонавтов 2/1, этаж 3, Гродно 230025
+
+      </div>
+    </div>
+
+
+  </footer>
+
+
 
   <img src="assets/images/dream_body_massagegrodno.png" alt="photo" class="photo">
   <img class="background-mask" src="assets/images/mask.png" alt="background-mask">

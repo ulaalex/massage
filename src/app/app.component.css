@@ -98,6 +98,7 @@ header {
 }
 
 .main-info {
+    min-height: 753.53px;
     margin-top: 40px;
 }
 
@@ -121,25 +122,108 @@ header {
 
 footer {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-image: radial-gradient(circle, rgb(201, 194, 186) 29%, rgb(198, 183, 157) 100%);
+}
+
+footer .f-main {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 5px;
-    padding-bottom: 35px;
+
+    padding-top: 40px;
+    padding-bottom: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+footer .f-main_menu {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    padding-top: 40px;
+    padding-bottom: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.f-main_element {
+    padding: 15px 5px;
+}
+
+footer .f-main_menu,
+footer .f-main_information {
+    align-items: initial;
+}
+
+footer .f-main_menu,
+footer .f-main_logo,
+footer .f-main_information {
+    flex-basis: 30%;
+}
+
+.f-main_menu .f-main_element {
+    padding: 5px 5px;
+}
+
+.main_menu,
+.other_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    flex-basis: 50%;
+}
+
+.f-main_menu a {
+    font-family: "СenturygothicBold", sans-serif;
+    font-size: 1.6em;
+    color: rgb(158, 141, 135);
+    line-height: 1.35;
+    user-select: text;
+    text-decoration: none;
+}
+
+.f-main_menu a span {
+    padding: 10px;
+
+}
+
+.f-main_menu a span:hover {
+    background-color: rgba(158, 141, 135, 0.4);
+    border-radius: 15px;
 }
 
 .logo-social {
-    display: inline-block;
-}
-
-.logo-social a {
-    display: inline-block;
-    margin-right: 15px;
+    display: flex;
+    width: 140px;
+    justify-content: space-between;
 }
 
 .logo-social a img {
     width: 30px;
     height: 30px;
     vertical-align: middle;
+}
+
+.logo-social a img:hover {
+    border-radius: 50%;
+    background-image: radial-gradient(circle, rgba(189, 134, 63, 0.5) 29%, rgb(191, 175, 148) 100%);
+}
+
+#phone a {
+    font-family: "СenturygothicBold", sans-serif;
+    font-size: 1.6em;
+    color: rgb(158, 141, 135);
+    line-height: 1.35;
+    user-select: text;
+    text-decoration: none;
+}
+
+#phone:hover {
+    background-color: rgba(158, 141, 135, 0.4);
+    border-radius: 15px;
 }
 
 .logo-name-mobile {
@@ -158,12 +242,15 @@ footer {
 
 .footer-information {
     display: inline-block;
+    text-align: center;
     font-size: 1.2em;
     font-family: "Сenturygothic", sans-serif;
     color: rgb(158, 141, 135);
 }
 
-
+.f-main_information .footer-information {
+    text-align: left;
+}
 
 #main:has(.about) {
     /* #main-container {
@@ -179,5 +266,5 @@ footer {
         height: 100%;
         left: -300px;
         width: calc(100% + 300px);
-    }    
+    }
 }
