@@ -117,17 +117,10 @@
     }
 
     .main_menu,
-<<<<<<< HEAD
-    .other_menu {      
-        align-items: center;
-        padding-left: 50px;  
-        padding-right: 50px;    
-=======
     .other_menu {
         align-items: center;
         padding-left: 50px;
         padding-right: 50px;
->>>>>>> 9907892fa20466905cb0700b0cce53f7d7320b43
     }
 
     .f-main_information .footer-information {
@@ -154,10 +147,6 @@
         display: none;
     }
 
-    footer .f-main_logo {
-        flex-basis: 100%;
-    }
-
     #phone a {
         font-size: 2em;
     }
@@ -174,15 +163,6 @@
         width: 200px;
         height: 80px;
         vertical-align: middle;
-    }
-
-    footer .f-main_menu,
-    footer .f-main_information {
-        display: none;
-    }
-
-    footer .f-main_logo {
-        flex-basis: 100%;
     }
 }
 
