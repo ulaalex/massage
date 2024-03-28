@@ -1,6 +1,6 @@
 :host {
-    position: fixed;
-    z-index: 1000;
+    position: absolute;
+    /* z-index: 1000; */
 }
 
 div {
@@ -26,12 +26,12 @@ div * {
     animation-name: OPEN_WIDGET;
 }
 
-.formMessages a,
-.formMessages form,
-.formMessages iframe,
-.formMessages input,
-.formMessages svg,
-.formMessages textarea {
+a,
+form,
+iframe,
+input,
+svg,
+textarea {
     clip: auto !important;
     word-wrap: normal !important;
     zoom: normal !important;

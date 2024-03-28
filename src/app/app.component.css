@@ -30,6 +30,7 @@
 
 #main {
     position: relative;
+    overflow: hidden;
     margin: 0 auto;
     max-width: 1440px;
     background-image: url("../assets/images/Background.png");
