@@ -16,14 +16,14 @@ div * {
 }
 
 .formMessages {
-    /* animation-duration: 1s; */
-    /* animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
     animation-delay: 1s;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: both;
     animation-play-state: running;
-    animation-name: OPEN_WIDGET; */
+    animation-name: OPEN_WIDGET;
 }
 
 .formMessages a,
