@@ -21,7 +21,7 @@ import { Wid } from '../assets/widget';
 @Component({
     selector: 'chat-root',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.css',],
+    styleUrls: ['./chat.component.css', './chat.component.adaptive.css'],
     providers: [Wid]
 
 })
