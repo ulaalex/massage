@@ -196,12 +196,9 @@ footer .f-main_information {
 }
 
 .logo-social {
-    display: inline-block;
-}
-
-.logo-social a {
-    display: inline-block;
-    margin-right: 15px;
+    display: flex;
+    width: 140px;
+    justify-content: space-between;
 }
 
 .logo-social a:last-child {
@@ -274,6 +271,7 @@ footer .f-main_information {
         left: -300px;
         width: calc(100% + 300px);
     }
+<<<<<<< HEAD
 }
 
 
@@ -294,3 +292,6 @@ h1 {
     margin-block-start: 0em !important;
     margin-block-end: 0em !important;
 }
+=======
+}
+>>>>>>> 9907892fa20466905cb0700b0cce53f7d7320b43
