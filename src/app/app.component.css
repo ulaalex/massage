@@ -23,6 +23,11 @@
     src: url("../assets/fonts/centurygothic_bold.ttf");
 }
 
+:host {
+    position: relative;
+    z-index: -1;
+}
+
 #main {
     position: relative;
     margin: 0 auto;
