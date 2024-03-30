@@ -135,6 +135,7 @@ textarea {
 }
 
 .label {
+    backface-visibility: hidden;
     box-shadow: 0 12px 14px 8px rgba(0, 0, 0, .17);
     display: block;
     filter: blur(0);
