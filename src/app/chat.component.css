@@ -119,7 +119,7 @@ textarea {
     bottom: 0px;
     right: 40px;
     background: linear-gradient(95deg, rgb(158, 134, 92) 20%, rgb(158, 141, 135) 80%);
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 
@@ -135,7 +135,6 @@ textarea {
 }
 
 .label {
-    backface-visibility: hidden;
     box-shadow: 0 12px 14px 8px rgba(0, 0, 0, .17);
     display: block;
     filter: blur(0);
@@ -148,7 +147,7 @@ textarea {
 
 .label .hoverl {
     bottom: 0;
-    cursor: pointer;
+    cursor: pointer !important;
     left: 0;
     position: absolute;
     right: 0;
@@ -291,8 +290,6 @@ a.link {
     font-family: Arial, Arial;
     font-style: normal;
     color: rgb(240, 241, 241);
-    cursor: pointer;
-
 }
 
 #jcont {
