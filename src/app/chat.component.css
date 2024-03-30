@@ -143,6 +143,7 @@ textarea {
     opacity: 0;
     position: fixed;
     z-index: 2147483648;
+    
 }
 
 .label .hoverl {
@@ -152,7 +153,7 @@ textarea {
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 4;
+    z-index: 2147483649;
 }
 
 .hoverl:hover .omnichannel {
