@@ -220,20 +220,14 @@ export class Wid {
 
             });
 
-            document.getElementById('instagram').addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
+            // document.getElementById('instagram').addEventListener('click', function (e) {
+            //     e.stopPropagation();
+            // });
 
             document.getElementById('jvlabelWrap').addEventListener('click', function () {
                 jcont.style.setProperty("animation-name", "WidgetContainer_OPEN_WIDGET");
                 document.getElementById('labelWrap').style.animationName = "Label_OPEN_WIDGET";
             });
-
-            document.getElementById('jvlabelWrap').addEventListener('touchstart', function () {
-                jcont.style.setProperty("animation-name", "WidgetContainer_OPEN_WIDGET");
-                document.getElementById('labelWrap').style.animationName = "Label_OPEN_WIDGET";
-            });
-
 
             document.getElementById('substrate_header').addEventListener('mousedown', function (e) {
                 document.getElementById('substrate_header').classList.add("wrap_substrate_active");
