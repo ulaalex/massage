@@ -87,7 +87,6 @@ textarea {
 }
 
 .formMessages {
-    bottom: 0px;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     animation-delay: 1s;
@@ -108,8 +107,11 @@ textarea {
     animation-play-state: running;
     animation-name: Label_CLOSE_WIDGET;
     display: block;
-    z-index: 2147483646;
     position: fixed;
+    z-index: 2147483646;
+
+    bottom: 0;
+
 }
 
 #jvlabelWrap {
