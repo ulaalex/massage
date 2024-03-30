@@ -220,9 +220,9 @@ export class Wid {
 
             });
 
-            // document.getElementById('instagram').addEventListener('click', function (e) {
-            //     e.stopPropagation();
-            // });
+            document.getElementById('instagram').addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
 
             document.getElementById('jvlabelWrap').addEventListener('click', function () {
                 jcont.style.setProperty("animation-name", "WidgetContainer_OPEN_WIDGET");
