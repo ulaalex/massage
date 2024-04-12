@@ -1,39 +1,40 @@
 import {
     Component,
-    Input,
-    OnInit,
-    DoCheck,
-    OnChanges,
-    AfterContentInit,
-    AfterContentChecked,
-    AfterViewChecked,
-    AfterViewInit,
-    HostListener
+    ViewChild,
+    ViewContainerRef,
+    ComponentRef,
+    AfterViewInit
+
 } from '@angular/core';
 
+import { ChatMobileComponent } from './chat-mobile.component';
 
-
-
-/// <reference path="widget.d.ts" />
-import { Wid } from '../assets/widget';
 
 
 @Component({
     selector: 'chat-root',
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.css', './chat.component.adaptive.css'],
-    providers: [Wid]
+    providers: []
 
 })
-export class ChatComponent implements AfterContentInit {
+export class ChatComponent implements AfterViewInit {
 
-    constructor(private chat: Wid) { 
+    @ViewChild('chat', { read: ViewContainerRef })
+    private viewRef!: ViewContainerRef;
+    private componentRef!: ComponentRef<ChatMobileComponent>;
 
+    showDynamicComponent(): void {
+        this.viewRef.clear();
+        this.componentRef = this.viewRef.createComponent(ChatMobileComponent);
     }
-    
-    ngAfterContentInit() {
-        this.chat.workWidget();
+
+    removeDynamicComponent(): void {
+        this.viewRef.clear();
     }
 
+    ngAfterViewInit() {
+        this.showDynamicComponent();
+    }
 
 }
