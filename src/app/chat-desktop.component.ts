@@ -20,12 +20,12 @@ import { Wid } from '../assets/widget';
 
 @Component({
     selector: 'chat-mobile',
-    templateUrl: './chat-mobile.component.html',
-    styleUrls: ['./chat-mobile.component.css', './chat-mobile.component.adaptive.css'],
+    templateUrl: './chat-desktop.component.html',
+    styleUrls: ['./chat-desktop.component.css', './chat-desktop.component.adaptive.css'],
     providers: [Wid]
 
 })
-export class ChatMobileComponent implements AfterContentInit {
+export class ChatDesktopComponent implements AfterContentInit {
 
     constructor(private chat: Wid) { 
 

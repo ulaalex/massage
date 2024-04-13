@@ -1,0 +1,35 @@
+@media screen and (max-width: 800px) {
+    #jcont {
+        --jheight: 400px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #jcont {
+        --jright: 0px !important;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    #jivo_close_button {
+        margin-left: 270px !important;
+        margin-top: -35px !important;
+    }
+
+
+}
+
+@media screen and (max-width: 360px) {
+    #labelWrap, #jcont {
+        display: none !important;
+    }
+}
+
+@media screen and (max-height: 435px) {
+    #labelWrap, #jcont {
+        display: none !important;
+    }
+
+    
+
+}

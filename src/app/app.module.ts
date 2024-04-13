@@ -9,7 +9,7 @@ import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 import { ContactComponent } from './contact.component';
 import { AboutComponent } from './about.component';
-import { ChatMobileComponent } from './chat-mobile.component';
+import { ChatDesktopComponent } from './chat-desktop.component';
 
 
 
@@ -18,7 +18,7 @@ import { ChatMobileComponent } from './chat-mobile.component';
   declarations: [
     AppComponent,
     ChatComponent,
-    ChatMobileComponent,
+    ChatDesktopComponent,
     HomeComponent,
     NotFoundComponent,
     AboutComponent,    

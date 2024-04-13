@@ -134,7 +134,7 @@ export class Wid {
 
 
                     if (message.userAvatar) {
-                       fragment_messageInput.querySelector('.avatarImg_messageInput').style.setProperty('background-image', `url(${message.userAvatar})`);
+                        fragment_messageInput.querySelector('.avatarImg_messageInput').style.setProperty('background-image', `url(${message.userAvatar})`);
                     }
 
 
@@ -230,66 +230,68 @@ export class Wid {
             });
 
             document.getElementById('substrate_header').addEventListener('mousedown', function (e) {
-                document.getElementById('substrate_header').classList.add("wrap_substrate_active");
-                document.querySelector('.scroll_message').style.display = "none";
-                let mousePreviousPositionX = e.clientX;
-                const widthWindow = document.documentElement.clientWidth;
-                const distanceToRightJcont = - e.clientX - +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') + widthWindow;
-                const distanceToLeftJcont = e.clientX + 336 + +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') - widthWindow;
+                if (window.innerWidth > 420) {
+                    document.getElementById('substrate_header').classList.add("wrap_substrate_active");
+                    document.querySelector('.scroll_message').style.display = "none";
+                    let mousePreviousPositionX = e.clientX;
+                    const widthWindow = document.documentElement.clientWidth;
+                    const distanceToRightJcont = - e.clientX - +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') + widthWindow;
+                    const distanceToLeftJcont = e.clientX + 336 + +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') - widthWindow;
 
-                let mousePreviousPositionY = e.clientY;
-                const heighthWindow = document.documentElement.clientHeight;
-                const distanceToTopJcont = e.clientY + +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '') - heighthWindow;
+                    let mousePreviousPositionY = e.clientY;
+                    const heighthWindow = document.documentElement.clientHeight;
+                    const distanceToTopJcont = e.clientY + +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '') - heighthWindow;
 
 
-                document.addEventListener('mousemove', onMouseMoveY);
-                document.addEventListener('mouseup', removeOnMouseMoveY);
-                document.addEventListener('mousemove', onMouseMoveX);
-                document.addEventListener('mouseup', removeOnMouseMoveX);
+                    document.addEventListener('mousemove', onMouseMoveY);
+                    document.addEventListener('mouseup', removeOnMouseMoveY);
+                    document.addEventListener('mousemove', onMouseMoveX);
+                    document.addEventListener('mouseup', removeOnMouseMoveX);
 
-                function onMouseMoveY(e) {
-                    const changedY = mousePreviousPositionY - e.clientY;
-                    mousePreviousPositionY = e.clientY;
-                    const currentJheight = +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '');
-                    const newJheight = currentJheight + changedY;
+                    function onMouseMoveY(e) {
+                        const changedY = mousePreviousPositionY - e.clientY;
+                        mousePreviousPositionY = e.clientY;
+                        const currentJheight = +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '');
+                        const newJheight = currentJheight + changedY;
 
-                    if ((distanceToTopJcont + 60 > e.clientY && currentJheight == (heighthWindow - 60)) || (currentJheight == 400 && e.clientY > heighthWindow - 400 + distanceToTopJcont)) { } else
-                        if ((heighthWindow - 60) > newJheight && newJheight > 400) {
-                            jcont.style.setProperty('--jheight', `${newJheight}px`);
-                        } else if ((heighthWindow - 60) <= newJheight) {
-                            jcont.style.setProperty('--jheight', `${heighthWindow - 60}px`);
-                        } else if (400 >= newJheight) {
-                            jcont.style.setProperty('--jheight', `${400}px`);
-                        }
+                        if ((distanceToTopJcont + 60 > e.clientY && currentJheight == (heighthWindow - 60)) || (currentJheight == 400 && e.clientY > heighthWindow - 400 + distanceToTopJcont)) { } else
+                            if ((heighthWindow - 60) > newJheight && newJheight > 400) {
+                                jcont.style.setProperty('--jheight', `${newJheight}px`);
+                            } else if ((heighthWindow - 60) <= newJheight) {
+                                jcont.style.setProperty('--jheight', `${heighthWindow - 60}px`);
+                            } else if (400 >= newJheight) {
+                                jcont.style.setProperty('--jheight', `${400}px`);
+                            }
+                    }
+
+                    function onMouseMoveX(e) {
+                        const changedX = mousePreviousPositionX - e.clientX;
+                        mousePreviousPositionX = e.clientX;
+                        const currentJright = +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '');
+                        const newJright = currentJright + changedX;
+
+                        if ((distanceToLeftJcont + 10 > e.clientX && currentJright == (widthWindow - 10 - 30 - 336)) || (currentJright == 30 && e.clientX > widthWindow - 30 - distanceToRightJcont)) { } else
+                            if ((widthWindow - 10 - 30 - 336) > newJright && newJright > 30) {
+                                jcont.style.setProperty('--jright', `${newJright}px`);
+                            } else if ((widthWindow - 10 - 30 - 336) <= newJright) {
+                                jcont.style.setProperty('--jright', `${widthWindow - 10 - 30 - 336}px`);
+                            } else if (30 >= newJright) {
+                                jcont.style.setProperty('--jright', `${30}px`);
+                            }
+                    }
+
+                    function removeOnMouseMoveY() {
+                        document.getElementById('substrate_header').classList.remove("wrap_substrate_active");
+                        document.querySelector('.scroll_message').style.display = "block";
+                        document.removeEventListener('mousemove', onMouseMoveY);
+                    }
+
+                    function removeOnMouseMoveX() {
+                        document.removeEventListener('mousemove', onMouseMoveX);
+                    }
                 }
-
-                function onMouseMoveX(e) {
-                    const changedX = mousePreviousPositionX - e.clientX;
-                    mousePreviousPositionX = e.clientX;
-                    const currentJright = +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '');
-                    const newJright = currentJright + changedX;
-
-                    if ((distanceToLeftJcont + 10 > e.clientX && currentJright == (widthWindow - 10 - 30 - 336)) || (currentJright == 30 && e.clientX > widthWindow - 30 - distanceToRightJcont)) { } else
-                        if ((widthWindow - 10 - 30 - 336) > newJright && newJright > 30) {
-                            jcont.style.setProperty('--jright', `${newJright}px`);
-                        } else if ((widthWindow - 10 - 30 - 336) <= newJright) {
-                            jcont.style.setProperty('--jright', `${widthWindow - 10 - 30 - 336}px`);
-                        } else if (30 >= newJright) {
-                            jcont.style.setProperty('--jright', `${30}px`);
-                        }
-                }
-
-                function removeOnMouseMoveY() {
-                    document.getElementById('substrate_header').classList.remove("wrap_substrate_active");
-                    document.querySelector('.scroll_message').style.display = "block";
-                    document.removeEventListener('mousemove', onMouseMoveY);
-                }
-
-                function removeOnMouseMoveX() {
-                    document.removeEventListener('mousemove', onMouseMoveX);
-                }
-
             });
+
 
         })
 
