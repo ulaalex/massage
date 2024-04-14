@@ -1,6 +1,6 @@
-@media screen and (max-width: 800px) {
+@media screen and (max-height: 496px) {
     #jcont {
-        --jheight: 400px;
+        --jheight: 400px !important;
     }
 }
 
