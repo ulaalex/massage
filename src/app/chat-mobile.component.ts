@@ -14,18 +14,18 @@ import {
 
 
 
-/// <reference path="widget.d.ts" />
-import { Wid } from '../assets/widget';
+/// <reference path="widget-mobile.d.ts" />
+import { Wid } from '../assets/widget-mobile';
 
 
 @Component({
-    selector: 'chat-desktop',
-    templateUrl: './chat-desktop.component.html',
-    styleUrls: ['./chat-desktop.component.css', './chat-desktop.component.adaptive.css'],
+    selector: 'chat-mobile',
+    templateUrl: './chat-mobile.component.html',
+    styleUrls: ['./chat-mobile.component.css', ],
     providers: [Wid]
 
 })
-export class ChatDesktopComponent implements AfterContentInit {
+export class ChatMobileComponent implements AfterContentInit {
 
     constructor(private chat: Wid) { 
 

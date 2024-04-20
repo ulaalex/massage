@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ChatDesktopComponent } from './chat-desktop.component';
-
+import { ChatMobileComponent } from './chat-mobile.component';
 
 
 @Component({
@@ -30,8 +30,11 @@ export class ChatComponent implements AfterViewInit {
 
     showDynamicComponent(): void {
         this.viewRef.clear();
-        if (!this.isMobile()) {
+        if (false) {  //!this.isMobile()
             this.viewRef.createComponent(ChatDesktopComponent);
+        } else {
+            this.viewRef.createComponent(ChatMobileComponent);
+    
         }
     }
 
