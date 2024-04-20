@@ -7,6 +7,7 @@ export class Wid {
 
 
 
+            
             const messages = document.getElementById('messages');
             const sendButton = document.getElementById('sendButton');
             const messageTextarea = document.getElementById('message');
