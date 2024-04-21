@@ -25,13 +25,13 @@ import { Wid } from '../assets/widget-mobile';
     providers: [Wid]
 
 })
-export class ChatMobileComponent implements AfterContentInit {
+export class ChatMobileComponent implements AfterViewInit {
 
     constructor(private chat: Wid) { 
 
     }
     
-    ngAfterContentInit() {
+    ngAfterViewInit() {
         this.chat.workWidget();
     }
 
