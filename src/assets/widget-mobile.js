@@ -3,7 +3,7 @@ export class Wid {
 
     workWidget() {
 
-        window.addEventListener('load', function () {
+        // window.addEventListener('load', function () {
 
 
 
@@ -239,7 +239,7 @@ export class Wid {
            
 
 
-        })
+        // })
 
     }
 }
