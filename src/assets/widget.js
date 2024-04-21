@@ -3,7 +3,7 @@ export class Wid {
 
     workWidget() {
 
-        window.addEventListener('load', function () {
+        // window.addEventListener('load', function () {
 
 
 
@@ -215,8 +215,11 @@ export class Wid {
             });
 
             document.getElementById('jivo_close_button').addEventListener('click', function () {
-                jcont.style.animationName = "WidgetContainer_CLOSE_WIDGET";
-                document.getElementById('labelWrap').style.animationName = "Label_CLOSE_WIDGET";
+                jcont.classList.remove("jcont_show");
+                jcont.classList.add("jcont_hidden");
+
+                document.getElementById('labelWrap').classList.remove("labelWrap_hidden");
+                document.getElementById('labelWrap').classList.add("labelWrap_show");
 
             });
 
@@ -225,8 +228,11 @@ export class Wid {
             });
 
             document.getElementById('jvlabelWrap').addEventListener('click', function () {
-                jcont.style.setProperty("animation-name", "WidgetContainer_OPEN_WIDGET");
-                document.getElementById('labelWrap').style.animationName = "Label_OPEN_WIDGET";
+                jcont.classList.remove("jcont_hidden");
+                jcont.classList.add("jcont_show");
+
+                document.getElementById('labelWrap').classList.remove("labelWrap_show");
+                document.getElementById('labelWrap').classList.add("labelWrap_hidden");
             });
 
             document.getElementById('substrate_header').addEventListener('mousedown', function (e) {
@@ -293,7 +299,7 @@ export class Wid {
             });
 
 
-        })
+        // })
 
     }
 }

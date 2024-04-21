@@ -213,6 +213,7 @@ export class Wid {
 
 
             document.getElementById('jivo_close_button').addEventListener('touchstart', function () {
+                document.body.classList.remove("hidden_scroll");
                 jcont.classList.remove("mobileContainer_show");
                 jcont.classList.add("mobileContainer_hidden");
                 document.getElementById('labelWrap').classList.remove("_hidden_fe37");
@@ -220,6 +221,7 @@ export class Wid {
             });
         
             document.getElementById('chat_open').addEventListener('touchstart', function () {
+                document.body.classList.add("hidden_scroll");
                 jcont.classList.remove("mobileContainer_hidden");
                 jcont.classList.add("mobileContainer_show");
                 document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");

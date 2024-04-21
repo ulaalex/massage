@@ -3,6 +3,140 @@
     z-index: 2147483640;
 }
 
+
+@keyframes WidgetContainer_OPEN_WIDGET {
+    0% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(100%);
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+
+    10% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(calc(100% - 40px));
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+
+    99% {
+        width: 336px;
+    }
+
+    to {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jright, --jlabelright);
+        transform: translateY(0);
+        width: 336px;
+        z-index: 2147483646;
+    }
+}
+
+@keyframes WidgetContainer_CLOSE_WIDGET {
+    0% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 1;
+        position: fixed;
+        right: var(--jright, --jlabelright);
+        transform: translateY(0);
+        width: 336px;
+        z-index: 2147483646;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    90% {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(calc(100% - 40px));
+        width: var(--jlabelwidth, 336px);
+        z-index: 2147483646;
+    }
+
+    to {
+        bottom: 0;
+        display: block;
+        height: var(--jheight, 496px);
+        left: var(--jlabelleft, auto);
+        opacity: 0;
+        position: fixed;
+        right: var(--jlabelright, auto);
+        transform: translateY(100%);
+        width: var(--jlabelwidth);
+        z-index: 2147483646;
+    }
+}
+
+
+@keyframes Label_OPEN_WIDGET {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes Label_CLOSE_WIDGET {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes OPEN_WIDGET {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    100% {
+        display: initial;
+        opacity: 1;
+    }
+}
+
+
 div {
     display: block;
     height: auto;
@@ -100,18 +234,25 @@ textarea {
 #labelWrap {
     animation-duration: 200ms;
     animation-timing-function: cubic-bezier(0.39, 0.24, 0.21, 0.99);
-    animation-delay: 0s;
+    
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: both;
     animation-play-state: running;
-    animation-name: Label_CLOSE_WIDGET;
     display: block;
     position: fixed;
     z-index: 2147483646;
-
     bottom: 0;
+}
 
+#labelWrap.labelWrap_hidden {
+    animation-delay: 0;
+    animation-name: Label_OPEN_WIDGET;
+}
+
+#labelWrap.labelWrap_show {
+    animation-delay: 100ms;
+    animation-name: Label_CLOSE_WIDGET;
 }
 
 #jvlabelWrap {
@@ -121,7 +262,6 @@ textarea {
     background: linear-gradient(95deg, rgb(158, 134, 92) 20%, rgb(158, 141, 135) 80%);
     cursor: pointer !important;
 }
-
 
 .label._bottom {
     display: flex;
@@ -142,8 +282,7 @@ textarea {
     height: 40px;
     opacity: 0;
     position: fixed;
-    z-index: 2147483648;
-    
+    z-index: 2147483648;    
 }
 
 .label .hoverl {
@@ -311,6 +450,14 @@ a.link {
     --jheight: 496px;
     --jlabelwidth: 300px;
     --jlabelright: 40px;
+}
+
+#jcont.jcont_show {
+    animation-name: WidgetContainer_OPEN_WIDGET;
+}
+
+#jcont.jcont_hidden {
+    animation-name: WidgetContainer_CLOSE_WIDGET;
 }
 
 .wrap {
