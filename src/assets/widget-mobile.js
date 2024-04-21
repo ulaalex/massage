@@ -231,6 +231,11 @@ export class Wid {
                 document.getElementById('labelWrap').classList.remove("_hidden_fe37");
                 document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
             });
+
+            document.querySelector('.main_dc1e').addEventListener('touchstart', function () {
+                document.getElementById('labelWrap').classList.remove("_hidden_fe37");
+                document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
+            });
         
             document.getElementById('labelWrap').addEventListener('touchstart', function () {
                 console.log("touchstart_label");
