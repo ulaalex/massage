@@ -231,6 +231,7 @@ export class Wid {
             });
         
             document.getElementById('labelWrap').addEventListener('touchstart', function () {
+                console.log("touchstart_label");
                 document.getElementById('labelWrap').classList.add("_hidden_fe37");
                 document.getElementById('menuWrapper').classList.add("wrapper_e942_show");
             });
