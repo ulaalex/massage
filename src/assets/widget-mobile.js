@@ -210,24 +210,24 @@ export class Wid {
         });
 
 
-        document.getElementById('alert_close_dialog_show').addEventListener('touchstart', function () {
+        document.getElementById('alert_close_dialog_show').addEventListener('touchend', function () {
             document.getElementById('alert_close_dialog').classList.add("wrapper_e942_show");
         });
 
-        document.getElementById('exit_dialog').addEventListener('touchstart', function () {
+        document.getElementById('exit_dialog').addEventListener('touchend', function () {
             document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
         });
 
-        document.getElementById('exit_dialog_cancel').addEventListener('touchstart', function () {
+        document.getElementById('exit_dialog_cancel').addEventListener('touchend', function () {
             document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
         });
 
-        document.querySelector('.main_dc1e_close_dialog').addEventListener('touchstart', function () {
+        document.querySelector('.main_dc1e_close_dialog').addEventListener('touchend', function () {
             document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
 
         });
 
-        document.getElementById('jivo_close_button').addEventListener('touchstart', function () {
+        document.getElementById('jivo_close_button').addEventListener('touchend', function () {
             document.body.classList.remove("hidden_scroll");
             jcont.classList.remove("mobileContainer_show");
             jcont.classList.add("mobileContainer_hidden");
@@ -235,25 +235,25 @@ export class Wid {
 
         });
 
-        document.getElementById('chat_open').addEventListener('touchstart', function () {
+        document.getElementById('chat_open').addEventListener('touchend', function () {
             document.body.classList.add("hidden_scroll");
             jcont.classList.remove("mobileContainer_hidden");
             jcont.classList.add("mobileContainer_show");
             document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
         });
 
-        document.getElementById('chat_cancel').addEventListener('touchstart', function () {
+        document.getElementById('chat_cancel').addEventListener('touchend', function () {
             document.getElementById('labelWrap').classList.remove("_hidden_fe37");
             document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
         });
 
-        document.querySelector('.main_dc1e').addEventListener('touchstart', function () {
+        document.querySelector('.main_dc1e').addEventListener('touchend', function () {
             document.getElementById('labelWrap').classList.remove("_hidden_fe37");
             document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
         });
 
-        document.getElementById('labelWrap').addEventListener('touchstart', function () {
-            console.log("touchstart_label");
+        document.getElementById('labelWrap').addEventListener('touchend', function () {
+            console.log("touchend_label");
             document.getElementById('labelWrap').classList.add("_hidden_fe37");
             document.getElementById('menuWrapper').classList.add("wrapper_e942_show");
         });
