@@ -827,6 +827,17 @@ input[type=text]:focus {
     z-index: 200 !important
 }
 
+.main_dc1e_close_dialog {
+    background-color: rgba(0, 0, 0, .4);
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 200 !important
+}
+
 .root_cc14 {
     background-color: #fff;
     color: #222d38;
@@ -859,6 +870,10 @@ input[type=text]:focus {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap
+}
+
+.menu_c48c.alert_close_dialog .ios_c4a5 {
+    justify-content: center;
 }
 
 .icon_db17 {
@@ -925,6 +940,10 @@ a.item_a5ce:last-child {
 .menuWrapper_e9dd.ios_e1f3 .menu_c48c>:last-child {
     margin-top: 8px
 }
+
+.menuWrapper_e9dd.ios_e1f3 .menu_c48c.alert_close_dialog {
+    bottom: 50px;
+ }
 
 .menuTitle_cce9 {
     border-bottom: 1px solid rgba(0, 0, 0, .12);
@@ -1133,6 +1152,11 @@ a.item_a5ce:last-child {
 
 .__fullWidth_b7ed {
     width: 100%
+}
+
+.filled_a6b3.__grey_ef22.disabled {
+    cursor: default;
+    opacity: 0.3;
 }
 
 .root_d262 {
@@ -1899,7 +1923,8 @@ textarea.inputField_f996::-webkit-input-placeholder {
     position: relative;
     position: absolute;
     top: 0;
-    width: 24px
+    width: 24px;
+    background-size: contain;
 }
 
 .uploadFwrap_bb4b {
