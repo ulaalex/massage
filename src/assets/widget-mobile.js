@@ -38,7 +38,7 @@ export class Wid {
         const actionOnMessage = {
             addMessagesStandart: function () {
                 let fragment_messagesStandart = document.getElementById('template_messagesStandart').content.cloneNode(true);
-                fragment_messagesStandart.querySelector(".main_message_standart").addEventListener('click', function (e) {
+                fragment_messagesStandart.querySelector(".main_message_standart").addEventListener('touchend', function (e) {
                     e.preventDefault();
                     if (e.target.classList.contains("button_message_standart")) {
                         sendMessage(new Message("userMessage", e.target.textContent, userName));
@@ -83,7 +83,7 @@ export class Wid {
 
         function onSocketClose(event) {
             console.log(`Код закрытия: ${event.code}`);
-            document.getElementById("exit_dialog").style.display = "none";
+            document.querySelector(".wrap_a482").style.display = "none";
             if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours" || event.reason === "timeout") {
                 messages.appendChild(startDialogue);
                 startDialogue.style.setProperty('display', 'block');
@@ -163,12 +163,12 @@ export class Wid {
         }
 
 
-        document.getElementById("exit_dialog").addEventListener('click', (e) => {
+        document.getElementById("exit_dialog").addEventListener('touchend', (e) => {
             e.preventDefault();
             socket.close(1000, "closed by user");
         });
 
-        document.getElementById("start_dialogue_button").addEventListener('click', (e) => {
+        document.getElementById("start_dialogue_button").addEventListener('touchend', (e) => {
             e.preventDefault();
             if (document.getElementById("name_user").validity.valid) {
                 startDialogue.style.setProperty('display', 'none');
@@ -193,7 +193,7 @@ export class Wid {
             }
         });
 
-        sendButton.addEventListener('click', function (e) {
+        sendButton.addEventListener('touchend', function (e) {
             e.preventDefault();
             const message = new Message("userMessage", messageTextarea.value, userName);
             sendMessage(message);
