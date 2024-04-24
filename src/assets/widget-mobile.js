@@ -184,7 +184,7 @@ export class Wid {
         document.getElementById("name_user").addEventListener('input', (e) => {
             if (e.target.validity.valid) {
                 document.getElementById("start_dialogue_button").classList.remove("disabled");
-                document.getElementById("name_user").style.backgroundColor = "";
+                document.getElementById("name_user").style.border = "";;
 
             } else {
                 document.getElementById("start_dialogue_button").classList.add("disabled");
