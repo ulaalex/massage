@@ -379,7 +379,7 @@ textarea {
     animation: 0s none !important;
     backface-visibility: visible !important;
     background: none !important;
-    border: 0 !important;
+    border: 0;
     bottom: auto !important;
     box-shadow: none !important;
     caption-side: top !important;
@@ -1208,7 +1208,7 @@ a.item_a5ce:last-child {
 .wrapper_c520 .input_be3a {
     -webkit-text-fill-color: #222d38 !important;
     background-color: #fff !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #ccc;
     border-radius: 6px !important;
     box-shadow: none !important;
     color: #000 !important;
@@ -1903,16 +1903,11 @@ textarea.inputField_f996::-webkit-input-placeholder {
 
 .wrap_a482 {
     cursor: pointer;
-    display: block;
+    display: none;
     height: 24px;
     margin-right: 7px;
     position: relative;
     width: 24px
-}
-
-.wrap_a482:hover {
-    background-color: #f1f0f0;
-    border-radius: 5px
 }
 
 .iconAttach2_c439 {
@@ -1987,4 +1982,16 @@ input.uploadButton_fe06::-webkit-file-upload-button {
     left: 9px;
     overflow: hidden;
     width: 32px;
+}
+
+.main_block_messageServer.main_c850._mobile_e1b8.__grey_f415 {
+    margin-left: 14px;
+}
+
+.main_block_messageServer .container_f4f0.__client_c763 {
+    justify-content: center;
+}
+
+.main_block_messageServer .__client_c763 ._grey_f52c {
+    background: linear-gradient(315deg, #d4b3b3, #d4b3b3);
 }

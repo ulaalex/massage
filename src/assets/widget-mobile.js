@@ -59,7 +59,7 @@ export class Wid {
         }
 
         function onSocketOpen(event) {
-            document.getElementById("exit_dialog").style.display = "block";
+            document.querySelector(".wrap_a482").style.display = "block";
             console.log('Успешное соединение');
             reconnectAttempts = 0;
         }
@@ -121,7 +121,7 @@ export class Wid {
                 soundOutgoingMessage.play();
                 messages.scrollIntoView({ behavior: "smooth", block: "end" });
                 messageTextarea.value = "";
-                sendButton.classList.add("__disabled_sendButton");
+                sendButton.classList.add("__disabled_f743");
             }
         }
 
@@ -163,41 +163,41 @@ export class Wid {
         }
 
 
-        // document.getElementById("exit_dialog").addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     socket.close(1000, "closed by user");
-        // });
+        document.getElementById("exit_dialog").addEventListener('click', (e) => {
+            e.preventDefault();
+            socket.close(1000, "closed by user");
+        });
 
-        // document.getElementById("start_dialogue_button").addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     if (document.getElementById("name_user").validity.valid) {
-        //         startDialogue.style.setProperty('display', 'none');
-        //         tryToConnect();
-        //     }
-        // });
+        document.getElementById("start_dialogue_button").addEventListener('click', (e) => {
+            e.preventDefault();
+            if (document.getElementById("name_user").validity.valid) {
+                startDialogue.style.setProperty('display', 'none');
+                tryToConnect();
+            }
+        });
 
-        // document.getElementById("name_user").addEventListener('input', (e) => {
-        //     e.preventDefault();
-        //     userName = e.target.value;
-        // });
+        document.getElementById("name_user").addEventListener('input', (e) => {
+            e.preventDefault();
+            userName = e.target.value;
+        });
 
-        // document.getElementById("name_user").addEventListener('input', (e) => {
-        //     if (e.target.validity.valid) {
-        //         document.getElementById("start_dialogue_button").classList.remove("start_dialogue_disabled");
-        //         document.querySelector('.name_input').style.backgroundColor = "";
+        document.getElementById("name_user").addEventListener('input', (e) => {
+            if (e.target.validity.valid) {
+                document.getElementById("start_dialogue_button").classList.remove("disabled");
+                document.getElementById("name_user").style.backgroundColor = "";
 
-        //     } else {
-        //         document.getElementById("start_dialogue_button").classList.add("start_dialogue_disabled");
-        //         document.querySelector('.name_input').style.backgroundColor = "rgba(255, 11, 11, 0.09)";
+            } else {
+                document.getElementById("start_dialogue_button").classList.add("disabled");
+                document.getElementById("name_user").style.border = "1px solid red";
 
-        //     }
-        // });
+            }
+        });
 
-        // sendButton.addEventListener('click', function (e) {
-        //     e.preventDefault();
-        //     const message = new Message("userMessage", messageTextarea.value, userName);
-        //     sendMessage(message);
-        // });
+        sendButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            const message = new Message("userMessage", messageTextarea.value, userName);
+            sendMessage(message);
+        });
 
 
 
