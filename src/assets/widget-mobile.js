@@ -52,7 +52,6 @@ export class Wid {
 
         function tryToConnect() {
             socket = new WebSocket("ws://localhost:3000");
-            console.log("new Socket");
             socket.onopen = onSocketOpen;
             socket.onmessage = onSocketMessage;
             socket.onclose = onSocketClose;
@@ -78,14 +77,28 @@ export class Wid {
         }
 
         function onSocketError(event) {
-            socket.close();
             console.log('Ошибка соединения');
-            console.log(socket);
-            
+            document.querySelector(".wrap_a482").style.display = "none";
+            if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                console.log(`Соединение закрыто. Попытка повторного подключения ${reconnectAttempts + 1}`);
+                setTimeout(() => tryToConnect(), 2000); // повторное подключение через 2 секунды
+                reconnectAttempts++;
+            } else {
+                console.log('Соединение закрыто. Слишком много попыток соединения. Соединение невозможно, попробуйте позже');
+                acceptMessage(
+                    new Message("serverMessage", "Сервер не отвечает. Соединение невозможно, попробуйте начать новый диалог позже.",)
+                );
+                setTimeout(() => {
+                    //reconnectAttempts = 0;
+                    messages.appendChild(startDialogue);
+                    startDialogue.style.setProperty('display', 'block');
+                    messages.scrollIntoView({ behavior: "smooth", block: "end" });
+                }, 2000);
+            }
+
         }
 
         function onSocketClose(event) {
-            socket.close();
             console.log(`Код закрытия: ${event.code}`);
             document.querySelector(".wrap_a482").style.display = "none";
             if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours" || event.reason === "timeout") {
