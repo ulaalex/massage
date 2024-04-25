@@ -79,10 +79,12 @@ export class Wid {
 
         function onSocketError(event) {
             console.log('Ошибка соединения');
+            console.log(event);
             socket.close();
         }
 
         function onSocketClose(event) {
+            socket.close();
             console.log(`Код закрытия: ${event.code}`);
             document.querySelector(".wrap_a482").style.display = "none";
             if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours" || event.reason === "timeout") {
