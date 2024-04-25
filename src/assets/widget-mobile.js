@@ -78,9 +78,10 @@ export class Wid {
         }
 
         function onSocketError(event) {
-            console.log('Ошибка соединения');
-            console.log(event);
             socket.close();
+            console.log('Ошибка соединения');
+            console.log(socket);
+            
         }
 
         function onSocketClose(event) {
