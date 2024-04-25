@@ -52,6 +52,7 @@ export class Wid {
 
         function tryToConnect() {
             socket = new WebSocket("ws://localhost:3000");
+            console.log("new Socket");
             socket.onopen = onSocketOpen;
             socket.onmessage = onSocketMessage;
             socket.onclose = onSocketClose;
