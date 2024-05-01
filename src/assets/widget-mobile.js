@@ -53,7 +53,7 @@ export class Wid {
 
         function tryToConnect() {
             errorEvent = null;
-            socket = new WebSocket("wss://adjusted-panda-promoted.ngrok-free.app/");
+            socket = new WebSocket("wss://adjusted-panda-promoted.ngrok-free.app");
             socket.onopen = onSocketOpen;
             socket.onmessage = onSocketMessage;
             socket.onclose = onSocketClose;
