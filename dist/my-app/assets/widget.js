@@ -7,7 +7,6 @@ export class Wid {
 
 
 
-
         const messages = document.getElementById('messages');
         const sendButton = document.getElementById('sendButton');
         const messageTextarea = document.getElementById('message');
@@ -39,7 +38,7 @@ export class Wid {
         const actionOnMessage = {
             addMessagesStandart: function () {
                 let fragment_messagesStandart = document.getElementById('template_messagesStandart').content.cloneNode(true);
-                fragment_messagesStandart.querySelector(".main_message_standart").addEventListener('touchend', function (e) {
+                fragment_messagesStandart.querySelector(".main_message_standart").addEventListener('click', function (e) {
                     e.preventDefault();
                     if (e.target.classList.contains("button_message_standart")) {
                         sendMessage(new Message("userMessage", e.target.textContent, userName));
@@ -53,7 +52,7 @@ export class Wid {
 
         function tryToConnect() {
             errorEvent = null;
-            socket = new WebSocket("wss://adjusted-panda-promoted.ngrok-free.app");
+            socket = new WebSocket("ws://localhost:3000");
             socket.onopen = onSocketOpen;
             socket.onmessage = onSocketMessage;
             socket.onclose = onSocketClose;
@@ -61,14 +60,13 @@ export class Wid {
         }
 
         function onSocketOpen(event) {
-            document.querySelector(".wrap_a482").style.display = "block";
+            document.getElementById("exit_dialog").style.display = "block";
             console.log('Успешное соединение');
             reconnectAttempts = 0;
         }
 
         function onSocketMessage(event) {
             const message = JSON.parse(event.data);
-            console.log(message);
             acceptMessage(message);
             try {
                 if (message.actionOnMessage) {
@@ -82,7 +80,7 @@ export class Wid {
         function onSocketError(event) {
             errorEvent = event;
             console.log('Ошибка соединения');
-            document.querySelector(".wrap_a482").style.display = "none";
+            document.getElementById("exit_dialog").style.display = "none";
             if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
                 console.log(`Ошибка соединения. Попытка повторного подключения ${reconnectAttempts + 1}`);
                 setTimeout(() => tryToConnect(), 2000); // повторное подключение через 2 секунды
@@ -99,13 +97,12 @@ export class Wid {
                     messages.scrollIntoView({ behavior: "smooth", block: "end" });
                 }, 2000);
             }
-
         }
 
         function onSocketClose(event) {
             if (!errorEvent) {
                 console.log(`Код закрытия: ${event.code}`);
-                document.querySelector(".wrap_a482").style.display = "none";
+                document.getElementById("exit_dialog").style.display = "none";
                 if (event.reason === "closed by user" || event.reason === "many clients" || event.reason === "non-working hours" || event.reason === "timeout") {
                     messages.appendChild(startDialogue);
                     startDialogue.style.setProperty('display', 'block');
@@ -144,7 +141,7 @@ export class Wid {
                 soundOutgoingMessage.play();
                 messages.scrollIntoView({ behavior: "smooth", block: "end" });
                 messageTextarea.value = "";
-                sendButton.classList.add("__disabled_f743");
+                sendButton.classList.add("__disabled_sendButton");
             }
         }
 
@@ -186,12 +183,12 @@ export class Wid {
         }
 
 
-        document.getElementById("exit_dialog").addEventListener('touchend', (e) => {
+        document.getElementById("exit_dialog").addEventListener('click', (e) => {
             e.preventDefault();
             socket.close(1000, "closed by user");
         });
 
-        document.getElementById("start_dialogue_button").addEventListener('touchend', (e) => {
+        document.getElementById("start_dialogue_button").addEventListener('click', (e) => {
             e.preventDefault();
             if (document.getElementById("name_user").validity.valid) {
                 startDialogue.style.setProperty('display', 'none');
@@ -206,82 +203,121 @@ export class Wid {
 
         document.getElementById("name_user").addEventListener('input', (e) => {
             if (e.target.validity.valid) {
-                document.getElementById("start_dialogue_button").classList.remove("disabled");
-                document.getElementById("name_user").style.border = "";;
+                document.getElementById("start_dialogue_button").classList.remove("start_dialogue_disabled");
+                document.querySelector('.name_input').style.backgroundColor = "";
 
             } else {
-                document.getElementById("start_dialogue_button").classList.add("disabled");
-                document.getElementById("name_user").style.border = "1px solid red";
+                document.getElementById("start_dialogue_button").classList.add("start_dialogue_disabled");
+                document.querySelector('.name_input').style.backgroundColor = "rgba(255, 11, 11, 0.09)";
 
             }
         });
 
-        sendButton.addEventListener('touchend', function (e) {
+        sendButton.addEventListener('click', function (e) {
             e.preventDefault();
             const message = new Message("userMessage", messageTextarea.value, userName);
             sendMessage(message);
         });
 
-
-
-        messageTextarea.addEventListener('input', function (e) {
-            if (e.target.value === "") {
-                sendButton.classList.add("__disabled_f743");
-            } else {
-                sendButton.classList.remove("__disabled_f743");
+        messageTextarea.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const message = new Message("userMessage", e.target.value, userName);
+                sendMessage(message);
             }
         });
 
-
-        document.getElementById('alert_close_dialog_show').addEventListener('touchend', function () {
-            document.getElementById('alert_close_dialog').classList.add("wrapper_e942_show");
+        messageTextarea.addEventListener('input', function (e) {
+            if (e.target.value === "") {
+                sendButton.classList.add("__disabled_sendButton");
+            } else {
+                sendButton.classList.remove("__disabled_sendButton");
+            }
         });
 
-        document.getElementById('exit_dialog').addEventListener('touchend', function () {
-            document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
-        });
+        document.getElementById('jivo_close_button').addEventListener('click', function () {
+            jcont.classList.remove("jcont_show");
+            jcont.classList.add("jcont_hidden");
 
-        document.getElementById('exit_dialog_cancel').addEventListener('touchend', function () {
-            document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
-        });
-
-        document.querySelector('.main_dc1e_close_dialog').addEventListener('touchend', function () {
-            document.getElementById('alert_close_dialog').classList.remove("wrapper_e942_show");
-
-        });
-
-        document.getElementById('jivo_close_button').addEventListener('touchend', function () {
-            document.body.classList.remove("hidden_scroll");
-            jcont.classList.remove("mobileContainer_show");
-            jcont.classList.add("mobileContainer_hidden");
-            document.getElementById('labelWrap').classList.remove("_hidden_fe37");
+            document.getElementById('labelWrap').classList.remove("labelWrap_hidden");
+            document.getElementById('labelWrap').classList.add("labelWrap_show");
 
         });
 
-        document.getElementById('chat_open').addEventListener('touchend', function () {
-            document.body.classList.add("hidden_scroll");
-            jcont.classList.remove("mobileContainer_hidden");
-            jcont.classList.add("mobileContainer_show");
-            document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
+        document.getElementById('instagram').addEventListener('click', function (e) {
+            e.stopPropagation();
         });
 
-        document.getElementById('chat_cancel').addEventListener('touchend', function () {
-            document.getElementById('labelWrap').classList.remove("_hidden_fe37");
-            document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
+        document.getElementById('jvlabelWrap').addEventListener('click', function () {
+            jcont.classList.remove("jcont_hidden");
+            jcont.classList.add("jcont_show");
+
+            document.getElementById('labelWrap').classList.remove("labelWrap_show");
+            document.getElementById('labelWrap').classList.add("labelWrap_hidden");
         });
 
-        document.querySelector('.main_dc1e').addEventListener('touchend', function () {
-            document.getElementById('labelWrap').classList.remove("_hidden_fe37");
-            document.getElementById('menuWrapper').classList.remove("wrapper_e942_show");
+        document.getElementById('substrate_header').addEventListener('mousedown', function (e) {
+            if (window.innerWidth > 420) {
+                document.getElementById('substrate_header').classList.add("wrap_substrate_active");
+                document.querySelector('.scroll_message').style.display = "none";
+                let mousePreviousPositionX = e.clientX;
+                const widthWindow = document.documentElement.clientWidth;
+                const distanceToRightJcont = - e.clientX - +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') + widthWindow;
+                const distanceToLeftJcont = e.clientX + 336 + +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '') - widthWindow;
+
+                let mousePreviousPositionY = e.clientY;
+                const heighthWindow = document.documentElement.clientHeight;
+                const distanceToTopJcont = e.clientY + +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '') - heighthWindow;
+
+
+                document.addEventListener('mousemove', onMouseMoveY);
+                document.addEventListener('mouseup', removeOnMouseMoveY);
+                document.addEventListener('mousemove', onMouseMoveX);
+                document.addEventListener('mouseup', removeOnMouseMoveX);
+
+                function onMouseMoveY(e) {
+                    const changedY = mousePreviousPositionY - e.clientY;
+                    mousePreviousPositionY = e.clientY;
+                    const currentJheight = +window.getComputedStyle(jcont).getPropertyValue('--jheight').replace(/[\D]/g, '');
+                    const newJheight = currentJheight + changedY;
+
+                    if ((distanceToTopJcont + 60 > e.clientY && currentJheight == (heighthWindow - 60)) || (currentJheight == 400 && e.clientY > heighthWindow - 400 + distanceToTopJcont)) { } else
+                        if ((heighthWindow - 60) > newJheight && newJheight > 400) {
+                            jcont.style.setProperty('--jheight', `${newJheight}px`);
+                        } else if ((heighthWindow - 60) <= newJheight) {
+                            jcont.style.setProperty('--jheight', `${heighthWindow - 60}px`);
+                        } else if (400 >= newJheight) {
+                            jcont.style.setProperty('--jheight', `${400}px`);
+                        }
+                }
+
+                function onMouseMoveX(e) {
+                    const changedX = mousePreviousPositionX - e.clientX;
+                    mousePreviousPositionX = e.clientX;
+                    const currentJright = +window.getComputedStyle(jcont).getPropertyValue('--jright').replace(/[\D]/g, '');
+                    const newJright = currentJright + changedX;
+
+                    if ((distanceToLeftJcont + 10 > e.clientX && currentJright == (widthWindow - 10 - 30 - 336)) || (currentJright == 30 && e.clientX > widthWindow - 30 - distanceToRightJcont)) { } else
+                        if ((widthWindow - 10 - 30 - 336) > newJright && newJright > 30) {
+                            jcont.style.setProperty('--jright', `${newJright}px`);
+                        } else if ((widthWindow - 10 - 30 - 336) <= newJright) {
+                            jcont.style.setProperty('--jright', `${widthWindow - 10 - 30 - 336}px`);
+                        } else if (30 >= newJright) {
+                            jcont.style.setProperty('--jright', `${30}px`);
+                        }
+                }
+
+                function removeOnMouseMoveY() {
+                    document.getElementById('substrate_header').classList.remove("wrap_substrate_active");
+                    document.querySelector('.scroll_message').style.display = "block";
+                    document.removeEventListener('mousemove', onMouseMoveY);
+                }
+
+                function removeOnMouseMoveX() {
+                    document.removeEventListener('mousemove', onMouseMoveX);
+                }
+            }
         });
-
-        document.getElementById('labelWrap').addEventListener('touchend', function () {
-            console.log("touchend_label");
-            document.getElementById('labelWrap').classList.add("_hidden_fe37");
-            document.getElementById('menuWrapper').classList.add("wrapper_e942_show");
-        });
-
-
 
 
         // })

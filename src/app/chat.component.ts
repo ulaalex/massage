@@ -30,7 +30,7 @@ export class ChatComponent implements AfterViewInit {
 
     showDynamicComponent(): void {
         this.viewRef.clear();
-        if (false) {  //!this.isMobile()
+        if (!this.isMobile()) {  //!this.isMobile()
             this.viewRef.createComponent(ChatDesktopComponent);
         } else {
             this.viewRef.createComponent(ChatMobileComponent);
