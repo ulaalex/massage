@@ -1,0 +1,101 @@
+:host {
+    display: block;
+    user-select: text;
+}
+
+.information {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 5em;
+    font-family: "PoppinsBold", sans-serif;
+    color: rgb(158, 141, 135);
+    margin-bottom: 25px;
+}
+
+.text {
+    font-family: "Сenturygothic", sans-serif;
+    font-size: 2em;
+    color: rgb(158, 141, 135);
+    line-height: 1.1;
+    list-style-position: inside;
+}
+
+.text span {
+    font-size: 0.8em;
+}
+
+.content-container {
+
+    /* display: flex;
+    flex-flow: row wrap;
+    column-gap: 2%;
+    row-gap: 20px;
+    justify-content: center; */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-rows: repeat(auto-fill, 400px);
+    gap: 30px;
+    justify-content: center;
+}
+
+.slider-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.no-slider-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.no-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.no-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

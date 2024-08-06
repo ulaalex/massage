@@ -11,8 +11,7 @@ import { ContactComponent } from './contact.component';
 import { AboutComponent } from './about.component';
 import { ChatDesktopComponent } from './chat-desktop.component';
 import { ChatMobileComponent } from './chat-mobile.component';
-
-
+import { ServiceArticlesComponent } from './service-articles.component';
 
 
 @NgModule({
@@ -24,11 +23,13 @@ import { ChatMobileComponent } from './chat-mobile.component';
     HomeComponent,
     NotFoundComponent,
     AboutComponent,    
-    ContactComponent,    
+    ContactComponent,
+       
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceArticlesComponent, 
   ],
   providers: [],
   bootstrap: [ChatComponent, AppComponent, ]

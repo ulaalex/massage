@@ -1,0 +1,42 @@
+<div class="about">
+    <div class="information">
+        <h1 class="title">Наши статьи</h1>
+
+
+        <div class="content-container">
+
+
+            <div *ngFor="let content of contentData">
+
+                <div class="no-slider-container" *ngIf="!content.children">
+                    <div class="no-slider">
+                        <img src="{{content.thumbnail_url || content.media_url}}" width="400" height="400" alt="">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="slider-container" *ngIf="content.children" slider>
+                    <div class="slider">
+                        <img src="{{mediaContent.media_url}}" *ngFor="let mediaContent of content.children?.data"
+                            width="400" height="400" alt="">
+                    </div>
+                    <button class="prev-button" type="button" aria-label="Посмотреть предыдущий слайд">&lt;</button>
+                    <button class="next-button" type="button" aria-label="Посмотреть следующий слайд">&gt;</button>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>

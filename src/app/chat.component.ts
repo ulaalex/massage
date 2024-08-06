@@ -2,7 +2,6 @@ import {
     Component,
     ViewChild,
     ViewContainerRef,
-    ComponentRef,
     AfterViewInit
 
 } from '@angular/core';
@@ -30,14 +29,13 @@ export class ChatComponent implements AfterViewInit {
 
     showDynamicComponent(): void {
         this.viewRef.clear();
-        if (!this.isMobile()) {  //!this.isMobile()
+        if (!this.isMobile()) {
             this.viewRef.createComponent(ChatDesktopComponent);
         } else {
             this.viewRef.createComponent(ChatMobileComponent);
-    
+
         }
     }
-
 
     ngAfterViewInit() {
         this.showDynamicComponent();

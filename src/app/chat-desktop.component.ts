@@ -1,14 +1,6 @@
 import {
     Component,
-    Input,
-    OnInit,
-    DoCheck,
-    OnChanges,
     AfterContentInit,
-    AfterContentChecked,
-    AfterViewChecked,
-    AfterViewInit,
-    HostListener
 } from '@angular/core';
 
 
@@ -27,10 +19,8 @@ import { Wid } from '../assets/widget';
 })
 export class ChatDesktopComponent implements AfterContentInit {
 
-    constructor(private chat: Wid) { 
+    constructor(private chat: Wid) { }
 
-    }
-    
     ngAfterContentInit() {
         this.chat.workWidget();
     }

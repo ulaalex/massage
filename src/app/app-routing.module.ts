@@ -5,11 +5,13 @@ import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 import { ContactComponent } from './contact.component';
 import { AboutComponent } from './about.component';
+import { ServiceArticlesComponent } from './service-articles.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, },
   { path: 'contact', component: ContactComponent, },
   { path: 'about', component: AboutComponent, },
+  { path: 'service', component: ServiceArticlesComponent, },
   { path: '**', component: NotFoundComponent, }
 ];
 
