@@ -6,8 +6,9 @@ export class Wid {
         // window.addEventListener('load', function () {
 
 
-        const urlWebSocket = `${(window.location.protocol === "https:") ? "wss://" : "ws://"}${window.location.host}`; //ws://localhost:3000
-
+        //const urlWebSocket = `${(window.location.protocol === "https:") ? "wss://" : "ws://"}${window.location.host}`; //ws://localhost:3000
+        const urlWebSocket = "wss://javascript.info/article/websocket/demo/hello";
+        
         const messages = document.getElementById('messages');
         const sendButton = document.getElementById('sendButton');
         const messageTextarea = document.getElementById('message');
