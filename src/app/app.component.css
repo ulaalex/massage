@@ -33,7 +33,7 @@
     overflow: hidden;
     margin: 0 auto;
     max-width: 1440px;
-    background-image: url("../assets/images/Background.png");
+    background-color: #bbb595;
     background-size: cover;
     font-size: 12px;
     user-select: none;

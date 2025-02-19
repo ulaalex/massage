@@ -869,6 +869,7 @@ input[type=text]:focus {
     max-width: calc(100% - 38px);
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 15px;
     white-space: nowrap
 }
 
