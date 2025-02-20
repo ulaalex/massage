@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    /* отключение автоматического увеличения текста (font boosting) */
     min-height: 1px;
     max-height: 999999px;
 }

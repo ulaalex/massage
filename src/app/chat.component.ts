@@ -21,8 +21,8 @@ export class ChatComponent implements AfterViewInit {
 
 
     isMobile = () => {
-        return true;
-        //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
+        
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
     }
 
     @ViewChild('chat', { read: ViewContainerRef })
