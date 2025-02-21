@@ -3,7 +3,7 @@
     margin: 0;
     /* отключение автоматического увеличения текста (font boosting) */
     min-height: 1px;
-    max-height: 999999px;
+    /* max-height: 999999px; */
 }
 
 .hidden_scroll {
