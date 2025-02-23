@@ -6,7 +6,7 @@
         <div class="content-container">
 
 
-            <div *ngFor="let content of contentData">
+            <div *ngFor="let content of contentData" class="content">
 
                 <div class="no-slider-container" *ngIf="!content.children">
                     <div class="no-slider">
@@ -27,7 +27,12 @@
                     <button class="next-button" type="button" aria-label="Посмотреть следующий слайд">&gt;</button>
                 </div>
 
-
+                <div class="caption" *ngIf="content.caption.split('\n').length - 1">
+                    <p class="caption-text-many">{{content.caption}}</p>
+                </div>
+                <div class="caption" *ngIf="!(content.caption.split('\n').length - 1)">
+                    <p class="caption-text-one">{{content.caption}}</p>
+                </div>
 
 
             </div>

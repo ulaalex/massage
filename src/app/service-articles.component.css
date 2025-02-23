@@ -36,7 +36,7 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fill, 400px);
-    grid-template-rows: repeat(auto-fill, 400px);
+    grid-template-rows: repeat(auto-fill, 455px);
     gap: 30px;
     justify-content: center;
 }
@@ -98,4 +98,44 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.caption {
+    box-sizing: border-box;
+    background-color: rgba(241, 195, 154, 0.237);
+    border-radius: 0 0 30px 30px;
+    height: 55px;
+    padding: 10px 15px 15px 15px;
+}
+
+.caption-text-one {
+    color: rgb(158, 141, 135);
+    font-size: 24px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.caption-text-many {
+    color: rgb(158, 141, 135);
+    font-size: 24px;
+    white-space: pre;
+    overflow: hidden;
+
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    /* Число отображаемых строк */
+    display: -webkit-box;
+    /* Включаем флексбоксы */
+    -webkit-box-orient: vertical;
+    /* Вертикальная ориентация */
+}
+
+.content {
+    transition: transform 0.5s ease-in-out;
+}
+
+.content:hover {
+    cursor: pointer;
+    transform: scale(1.05, 1.05);
 }
