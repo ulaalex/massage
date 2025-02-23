@@ -35,16 +35,16 @@
     justify-content: center; */
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
-    grid-template-rows: repeat(auto-fill, 455px);
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-rows: repeat(auto-fill, 227px);
     gap: 30px;
     justify-content: center;
 }
 
 .slider-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     margin: 0;
     overflow: hidden;
 }
@@ -69,22 +69,22 @@
     height: 50px;
     background-color: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 12px;
     color: white;
 }
 
 .prev-button {
-    left: 10px;
+    left: 5px;
 }
 
 .next-button {
-    right: 10px;
+    right: 5px;
 }
 
 .no-slider-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     margin: 0;
     overflow: hidden;
 }
@@ -103,14 +103,14 @@
 .caption {
     box-sizing: border-box;
     background-color: rgba(241, 195, 154, 0.237);
-    border-radius: 0 0 30px 30px;
-    height: 55px;
-    padding: 10px 15px 15px 15px;
+    border-radius: 0 0 15px 15px;
+    height: 35px;
+    padding: 5px 7px 9px 7px;
 }
 
 .caption-text-one {
     color: rgb(158, 141, 135);
-    font-size: 24px;
+    font-size: 15px;
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -118,7 +118,7 @@
 
 .caption-text-many {
     color: rgb(158, 141, 135);
-    font-size: 24px;
+    font-size: 15px;
     white-space: pre;
     overflow: hidden;
 
