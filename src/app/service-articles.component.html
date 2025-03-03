@@ -2,14 +2,85 @@
     <div class="information">
         <h1 class="title">Наши статьи</h1>
 
+        <div class="layer-block" [class.visible-block-article]="stateArticle"> </div>
+
+        <div class="block-article" [class.visible-block-article]="stateArticle">
+
+            <div class="wrap show" dir="ltr" (click)="closeArticle()">
+                <div class="articleCloseButton" id="article_close_button">
+                    <div class="articleCloseIcon">
+                        <svg version="1.1" id="Outline" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="100%" y="100%" viewBox="0 0 512 512"
+                            xml:space="preserve">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #FFFFFF;
+                                }
+
+                                .st1 {
+                                    fill: #FFFFFF;
+                                    stroke: #FFFFFF;
+                                    stroke-miterlimit: 10;
+                                }
+                            </style>
+                            <path class="st0" d="M341.3,170.7c-8.3-8.3-21.8-8.3-30.2,0L256,225.8l-55.2-55.2c-8.5-8.2-22-8-30.2,0.5c-8,8.3-8,21.4,0,29.6
+	l55.2,55.2l-55.2,55.2c-8.2,8.5-8,22,0.5,30.2c8.3,8,21.4,8,29.6,0l55.2-55.2l55.2,55.2c8.5,8.2,22,8,30.2-0.5c8-8.3,8-21.4,0-29.6
+	L286.2,256l55.2-55.2C349.7,192.5,349.7,179,341.3,170.7z" />
+                            <path class="st1" d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256C511.8,114.7,397.3,0.2,256,0z M256,469.3
+	c-117.8,0-213.3-95.5-213.3-213.3S138.2,42.7,256,42.7S469.3,138.2,469.3,256C469.2,373.8,373.8,469.2,256,469.3z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" *ngIf="dataArticle && stateArticle">
+
+                <div class="photo-article">
+                    <div class="slider-container" *ngIf="dataArticle.children" slider #containerSlider>
+                        <div class="slider">
+
+                            <div class="slide" *ngFor="let mediaContent of dataArticle.children.data">
+                                <img #imgSlider src="{{mediaContent.media_url}}" alt="">
+                            </div>
+
+                        </div>
+                        <button class="prev-button button-article" type="button"
+                            aria-label="Посмотреть предыдущий слайд">&#10094;</button>
+                        <button class="next-button button-article" type="button"
+                            aria-label="Посмотреть следующий слайд">&#10095;</button>
+                    </div>
+
+
+
+
+                    <div class="no-slider-container" *ngIf="!dataArticle.children">
+                        <div class="no-slider">
+                            <img src="{{dataArticle.thumbnail_url || dataArticle.media_url}}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-article-block">
+                    <div class="text-article">
+                        <p>{{dataArticle.caption ? dataArticle.caption : "Статья отсутствует."}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
 
         <div class="content-container">
 
 
             <div *ngFor="let content of contentData" class="content">
 
-                <div class="no-slider-container" *ngIf="!content.children">
-                    <div class="no-slider">
+                <div class="no-slider-container preview" *ngIf="!content.children">
+                    <div class="no-slider" (click)="openArticle(content)">
                         <img src="{{content.thumbnail_url || content.media_url}}" width="400" height="400" alt="">
 
                     </div>
@@ -18,19 +89,21 @@
 
 
 
-                <div class="slider-container" *ngIf="content.children" slider>
-                    <div class="slider">
+                <div class="slider-container preview" *ngIf="content.children" slider>
+                    <div class="slider" (click)="openArticle(content)">
                         <img src="{{mediaContent.media_url}}" *ngFor="let mediaContent of content.children?.data"
                             width="400" height="400" alt="">
                     </div>
-                    <button class="prev-button" type="button" aria-label="Посмотреть предыдущий слайд">&lt;</button>
-                    <button class="next-button" type="button" aria-label="Посмотреть следующий слайд">&gt;</button>
+                    <button class="prev-button" type="button" aria-label="Посмотреть предыдущий слайд">&#10094;</button>
+                    <button class="next-button" type="button" aria-label="Посмотреть следующий слайд">&#10095;</button>
                 </div>
 
-                <div class="caption" *ngIf="content.caption.split('\n').length - 1">
+
+
+                <div class="caption" *ngIf="content.caption ? content.caption.split('\n').length - 1 : false">
                     <p class="caption-text-many">{{content.caption}}</p>
                 </div>
-                <div class="caption" *ngIf="!(content.caption.split('\n').length - 1)">
+                <div class="caption" *ngIf="!(content.caption ? content.caption.split('\n').length - 1 : false)">
                     <p class="caption-text-one">{{content.caption}}</p>
                 </div>
 

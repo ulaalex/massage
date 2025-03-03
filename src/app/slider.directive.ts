@@ -1,16 +1,13 @@
-import { Directive, ElementRef, afterRender, } from "@angular/core";
+import { Directive, ElementRef, AfterViewInit, } from "@angular/core";
 
 
 @Directive({
     selector: '[slider]',
     standalone: true,
 })
-export class SliderDirective {
+export class SliderDirective implements AfterViewInit {
 
     constructor(private el: ElementRef) {
-        afterRender(() => {
-            this.createSlider(this.el.nativeElement);
-        });
     }
 
 
@@ -22,6 +19,7 @@ export class SliderDirective {
         const slides = Array.from(element.querySelectorAll('img'));
         const slideCount = slides.length;
         let slideIndex = 0;
+
 
         prevButton.addEventListener('click', () => {
             slideIndex = (slideIndex - 1 + slideCount) % slideCount;
@@ -39,6 +37,10 @@ export class SliderDirective {
             slider.style.transform = `translateX(${slideOffset}px)`;
         }
 
+    }
+
+    ngAfterViewInit() {
+        this.createSlider(this.el.nativeElement);
     }
 
 
