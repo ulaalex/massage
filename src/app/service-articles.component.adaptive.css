@@ -6,10 +6,27 @@
 }
 
 @media (orientation: portrait) {
-  
-    
+
+    .article {
+        max-height: initial;
+    }
+
+    .block-article {
+        overflow-y: scroll;
+    }
+
+    .article {
+        flex-direction: column;
+    }
+
+    .photo-article {
+        width: 100%; 
+    }
+
+    .text-article-block {
+        width: 100%;
+    }
 
 
 
-    
-  }
+}
