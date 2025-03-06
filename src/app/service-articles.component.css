@@ -166,7 +166,7 @@
 
 .wrap {
     display: none;
-    position: absolute !important;
+    position: fixed !important;
     height: 100%;
     width: 100%;
     cursor: pointer !important;
@@ -204,7 +204,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 501;
+    z-index: 501;    
 }
 
 .visible-block-article {
@@ -221,7 +221,7 @@
     margin: 10px auto auto auto;
     border-radius: 15px;
     overflow: hidden;
-    justify-content: space-between;
+    justify-content: space-between;   
 }
 
 .photo-article {
