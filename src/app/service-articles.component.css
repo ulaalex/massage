@@ -185,12 +185,13 @@
     position: absolute;
     right: 5px;
     top: 5px;
+    height: 4em;
+    width: 4em;
+
 }
 
 .articleCloseIcon {
-    display: block;
-    height: 4em;
-    width: 4em;
+    display: block;    
 }
 
 .wrap:hover {
