@@ -74,12 +74,16 @@ export class ServiceArticlesComponent implements OnInit {
     openArticle(dataArticle: Content) {
         this.stateArticle = true;
         this.renderer.setStyle(this.bodyElement,'overflow', 'hidden');
+        this.renderer.setStyle(this.bodyElement,'height', '100vh');
+
         this.dataArticle = dataArticle;
     }
 
     closeArticle() {
         this.stateArticle = false;
         this.renderer.setStyle(this.bodyElement,'overflow', 'initial');
+        this.renderer.setStyle(this.bodyElement,'height', 'initial');
+
     }
 
 
