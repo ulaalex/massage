@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild, ElementRef, afterRender } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2, ViewChild, ElementRef, afterRender } from '@angular/core';
 import { NgFor, NgIf } from "@angular/common";
 
 
@@ -45,7 +45,8 @@ export class Content {
 export class ServiceArticlesComponent implements OnInit {
 
     constructor(
-        private httpService: HttpService
+        private httpService: HttpService,
+        private renderer: Renderer2
     ) { }
 
     scrollHeight: number = Math.max(
@@ -68,16 +69,17 @@ export class ServiceArticlesComponent implements OnInit {
 
     stateArticle: boolean = false;
     dataArticle!: Content;
+    bodyElement!: HTMLElement;
 
     openArticle(dataArticle: Content) {
         this.stateArticle = true;
-        document.body.style.overflow = "hidden";
+        this.renderer.setStyle(this.bodyElement,'overflow', 'hidden');
         this.dataArticle = dataArticle;
     }
 
     closeArticle() {
         this.stateArticle = false;
-        document.body.style.overflow = "initial";
+        this.renderer.setStyle(this.bodyElement,'overflow', 'initial');
     }
 
 
@@ -310,6 +312,7 @@ export class ServiceArticlesComponent implements OnInit {
     ];
 
     ngOnInit() {
+        this.bodyElement = document.body;
 
         // this.httpService.getDataInstagram()
         // .subscribe({
