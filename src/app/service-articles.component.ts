@@ -73,13 +73,13 @@ export class ServiceArticlesComponent implements OnInit {
 
     openArticle(dataArticle: Content) {
         this.stateArticle = true;
-        this.renderer.setStyle(this.bodyElement,'overflow', 'hidden');
+        this.renderer.addClass(this.bodyElement, 'hidden_scroll_body');
         this.dataArticle = dataArticle;
     }
 
     closeArticle() {
         this.stateArticle = false;
-        this.renderer.setStyle(this.bodyElement,'overflow', 'initial');
+        this.renderer.removeClass(this.bodyElement,'hidden_scroll_body');
 
     }
 
