@@ -9,7 +9,6 @@
 
     .block-article {
         overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
     }
 
     .article {
@@ -32,8 +31,6 @@
 
     .block-article {
         overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-
     }
 
     .article {
