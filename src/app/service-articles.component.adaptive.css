@@ -27,7 +27,7 @@
 
 }
 
-@media (max-width: 768px), (max-height: 768px) {
+@media (max-width: 640px), (max-height: 640px) {
 
     .block-article {
         overflow-y: scroll;
