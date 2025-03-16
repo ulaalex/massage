@@ -70,16 +70,34 @@ export class ServiceArticlesComponent implements OnInit {
     stateArticle: boolean = false;
     dataArticle!: Content;
     bodyElement!: HTMLElement;
+    windowOffsetTop!: number;
 
     openArticle(dataArticle: Content) {
-        this.stateArticle = true;
+
+
+        this.windowOffsetTop = window.scrollY;
+        console.log(this.windowOffsetTop);
         this.renderer.addClass(this.bodyElement, 'hidden_scroll_body');
+        this.renderer.setStyle(this.bodyElement, 'top', `${-this.windowOffsetTop}px`);
+
+
+        this.stateArticle = true;
         this.dataArticle = dataArticle;
     }
 
     closeArticle() {
+      
         this.stateArticle = false;
-        this.renderer.removeClass(this.bodyElement,'hidden_scroll_body');
+       
+        this.renderer.removeClass(this.bodyElement, 'hidden_scroll_body');
+        this.renderer.setStyle(this.bodyElement, 'top', '');
+        window.scrollBy({
+            top: this.windowOffsetTop,
+            behavior: "smooth",
+        });
+        //document.documentElement.scrollTop = this.windowOffsetTop;
+        //  this.renderer.setProperty(document.documentElement, 'scrollTop', this.windowOffsetTop);
+
 
     }
 
