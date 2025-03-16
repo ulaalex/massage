@@ -18,6 +18,7 @@ html {
 }
 
 .hidden_scroll_body {
+    
     position: relative;
     overflow: hidden;
     width: 100%;
