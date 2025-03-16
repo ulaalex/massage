@@ -80,7 +80,7 @@
             <div *ngFor="let content of contentData" class="content">
 
                 <div class="no-slider-container preview" *ngIf="!content.children">
-                    <div class="no-slider" (click)="openArticle(content)">
+                    <div class="no-slider" (click)="openArticle(content, $event)">
                         <img src="{{content.thumbnail_url || content.media_url}}" width="400" height="400" alt="">
 
                     </div>
@@ -90,7 +90,7 @@
 
 
                 <div class="slider-container preview" *ngIf="content.children" slider>
-                    <div class="slider" (click)="openArticle(content)">
+                    <div class="slider" (click)="openArticle(content, $event)">
                         <img src="{{mediaContent.media_url}}" *ngFor="let mediaContent of content.children?.data"
                             width="400" height="400" alt="">
                     </div>

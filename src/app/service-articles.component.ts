@@ -74,10 +74,12 @@ export class ServiceArticlesComponent implements OnInit {
     windowOffsetTop!: number;
     documentScrollHeight!: number;
     percentDocumentScrollHeight!: number;
+    elementTarget!: HTMLElement;
 
 
-    openArticle(dataArticle: Content) {
+    openArticle(dataArticle: Content, e: Event) {
 
+        this.elementTarget = e.target as HTMLElement;
 
         this.windowOffsetTop = window.scrollY;
         this.documentScrollHeight = this.htmlElement.scrollHeight;
@@ -97,9 +99,13 @@ export class ServiceArticlesComponent implements OnInit {
 
         this.renderer.removeClass(this.bodyElement, 'hidden_scroll_body');
         this.renderer.setStyle(this.bodyElement, 'top', '');
+        this.elementTarget.scrollIntoView({
+            block: "center",
+        });
 
-        this.documentScrollHeight = this.htmlElement.scrollHeight;
-        this.renderer.setProperty(document.documentElement, 'scrollTop', this.percentDocumentScrollHeight * this.documentScrollHeight);
+
+        // this.documentScrollHeight = this.htmlElement.scrollHeight;
+        // this.renderer.setProperty(document.documentElement, 'scrollTop', this.percentDocumentScrollHeight * this.documentScrollHeight);
     }
 
 
