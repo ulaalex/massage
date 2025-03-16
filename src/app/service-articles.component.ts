@@ -91,12 +91,12 @@ export class ServiceArticlesComponent implements OnInit {
        
         this.renderer.removeClass(this.bodyElement, 'hidden_scroll_body');
         this.renderer.setStyle(this.bodyElement, 'top', '');
-        window.scrollBy({
-            top: this.windowOffsetTop,
-            behavior: "smooth",
-        });
+        // window.scrollBy({
+        //     top: this.windowOffsetTop,
+        //     behavior: "smooth",
+        // });
         //document.documentElement.scrollTop = this.windowOffsetTop;
-        //  this.renderer.setProperty(document.documentElement, 'scrollTop', this.windowOffsetTop);
+        this.renderer.setProperty(document.documentElement, 'scrollTop', this.windowOffsetTop);
 
 
     }
