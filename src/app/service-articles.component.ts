@@ -70,42 +70,29 @@ export class ServiceArticlesComponent implements OnInit {
     stateArticle: boolean = false;
     dataArticle!: Content;
     bodyElement!: HTMLElement;
-    htmlElement!: HTMLElement;
     windowOffsetTop!: number;
-    documentScrollHeight!: number;
-    percentDocumentScrollHeight!: number;
     elementTarget!: HTMLElement;
 
 
     openArticle(dataArticle: Content, e: Event) {
-
         this.elementTarget = e.target as HTMLElement;
-
         this.windowOffsetTop = window.scrollY;
-        this.documentScrollHeight = this.htmlElement.scrollHeight;
-        this.percentDocumentScrollHeight = this.windowOffsetTop / this.documentScrollHeight;
 
         this.renderer.addClass(this.bodyElement, 'hidden_scroll_body');
         this.renderer.setStyle(this.bodyElement, 'top', `${-this.windowOffsetTop}px`);
-
 
         this.stateArticle = true;
         this.dataArticle = dataArticle;
     }
 
     closeArticle() {
-
         this.stateArticle = false;
-
         this.renderer.removeClass(this.bodyElement, 'hidden_scroll_body');
         this.renderer.setStyle(this.bodyElement, 'top', '');
         this.elementTarget.scrollIntoView({
             block: "center",
+            behavior: "instant"
         });
-
-
-        // this.documentScrollHeight = this.htmlElement.scrollHeight;
-        // this.renderer.setProperty(document.documentElement, 'scrollTop', this.percentDocumentScrollHeight * this.documentScrollHeight);
     }
 
 
@@ -339,7 +326,6 @@ export class ServiceArticlesComponent implements OnInit {
 
     ngOnInit() {
         this.bodyElement = document.body;
-        this.htmlElement = document.documentElement;
 
         // this.httpService.getDataInstagram()
         // .subscribe({

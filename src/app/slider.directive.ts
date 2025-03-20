@@ -1,5 +1,8 @@
-import { Directive, ElementRef, AfterViewInit, } from "@angular/core";
+import { Directive, ElementRef, AfterViewInit, HostListener, } from "@angular/core";
 
+
+/// <reference path="swiped-events.d.ts" />
+import * as say from 'swiped-events';
 
 @Directive({
     selector: '[slider]',
@@ -13,44 +16,38 @@ export class SliderDirective implements AfterViewInit {
     createSlider(element: { querySelector: (arg0: string) => any; querySelectorAll: (arg0: string) => Iterable<unknown> | ArrayLike<unknown>; }) {
 
         const slider = element.querySelector('.slider');
-        // const slideDiv = element.querySelector('.slide');
         const prevButton = element.querySelector('.prev-button');
         const nextButton = element.querySelector('.next-button');
         const slides = Array.from(element.querySelectorAll('img'));
         const slideCount = slides.length;
         let slideIndex = 0;
 
-
-        prevButton.addEventListener('click', () => {
+        function showPrevtImage() {
             slideIndex = (slideIndex - 1 + slideCount) % slideCount;
             slide();
-        });
+        }
 
-        nextButton.addEventListener('click', () => {
+        function showNextImage() {
             slideIndex = (slideIndex + 1) % slideCount;
             slide();
-        });
-
-        // if (slideDiv) {
-        //     const ro = new ResizeObserver(entries => {
-        //         for (let entry of entries) {
-        //             if (entry.target === slideDiv) {
-        //                 slide();
-        //             }
-        //         }
-        //     });
-        //     ro.observe(slideDiv);
-        // }
+        }
 
         function slide() {
-            // const imageWidth = slider.clientWidth;
             const slideOffset = -slideIndex * 100;
             slider.style.transform = `translateX(${slideOffset}%)`;
         }
 
+
+        prevButton.addEventListener('click', showPrevtImage);
+        nextButton.addEventListener('click', showNextImage);
+
+        this.el.nativeElement.addEventListener('swiped-left', showPrevtImage);
+        this.el.nativeElement.addEventListener('swiped-right', showNextImage);
+
+
     }
 
-    
+
     ngAfterViewInit() {
         this.createSlider(this.el.nativeElement);
     }
