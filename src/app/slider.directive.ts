@@ -1,16 +1,19 @@
 import { Directive, ElementRef, AfterViewInit, HostListener, } from "@angular/core";
 
 
+
 /// <reference path="swiped-events.d.ts" />
-import * as say from 'swiped-events';
+import { Swipe } from './swiped-events';
+
 
 @Directive({
     selector: '[slider]',
     standalone: true,
+    providers: [Swipe]
 })
 export class SliderDirective implements AfterViewInit {
 
-    constructor(private el: ElementRef) { }
+    constructor(private el: ElementRef, private swipe: Swipe) { }
 
 
     createSlider(element: { querySelector: (arg0: string) => any; querySelectorAll: (arg0: string) => Iterable<unknown> | ArrayLike<unknown>; }) {
@@ -50,6 +53,7 @@ export class SliderDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         this.createSlider(this.el.nativeElement);
+        this.swipe.swipe(window, document);
     }
 
 
