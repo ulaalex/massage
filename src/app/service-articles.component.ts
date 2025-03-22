@@ -30,7 +30,8 @@ export class Content {
     ) { }
 }
 
-
+/// <reference path="swiped-events.d.ts" />
+import { Swipe } from './swiped-events';
 
 
 @Component({
@@ -39,14 +40,15 @@ export class Content {
     templateUrl: './service-articles.component.html',
     styleUrls: ['./service-articles.component.css', './service-articles.component.adaptive.css'],
     imports: [NgFor, NgIf, SliderDirective, HttpClientModule,],
-    providers: [HttpService]
+    providers: [HttpService, Swipe]
 })
 
 export class ServiceArticlesComponent implements OnInit {
 
     constructor(
         private httpService: HttpService,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+      private swipe: Swipe
     ) { }
 
     scrollHeight: number = Math.max(
@@ -335,7 +337,11 @@ export class ServiceArticlesComponent implements OnInit {
         //     this.contentData = data;
         //   }
         // });
-
+        
+          this.swipe.swipe(window, document);
+          console.log("dfds");
+      
+      
     }
 
 }

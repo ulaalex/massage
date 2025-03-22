@@ -2,18 +2,16 @@ import { Directive, ElementRef, AfterViewInit, HostListener, } from "@angular/co
 
 
 
-/// <reference path="swiped-events.d.ts" />
-import { Swipe } from './swiped-events';
+
 
 
 @Directive({
     selector: '[slider]',
     standalone: true,
-    providers: [Swipe]
 })
 export class SliderDirective implements AfterViewInit {
 
-    constructor(private el: ElementRef, private swipe: Swipe) { }
+    constructor(private el: ElementRef) { }
 
 
     createSlider(element: { querySelector: (arg0: string) => any; querySelectorAll: (arg0: string) => Iterable<unknown> | ArrayLike<unknown>; }) {
@@ -44,16 +42,15 @@ export class SliderDirective implements AfterViewInit {
         prevButton.addEventListener('click', showPrevtImage);
         nextButton.addEventListener('click', showNextImage);
 
-        this.el.nativeElement.addEventListener('swiped-left', showNextImage);
-        this.el.nativeElement.addEventListener('swiped-right', showPrevtImage);
-
+        slider.addEventListener('swiped-left', showNextImage);
+        slider.addEventListener('swiped-right', showPrevtImage);
 
     }
 
 
+
     ngAfterViewInit() {
-        this.swipe.swipe(window, document);
-        this.createSlider(this.el.nativeElement);        
+        this.createSlider(this.el.nativeElement);
     }
 
 
