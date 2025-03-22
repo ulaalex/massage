@@ -38,4 +38,8 @@
         margin-bottom: 100px;
     }
 
+    .articleCloseButton {
+        right: 10px;
+    }
+    
 }

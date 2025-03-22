@@ -44,16 +44,16 @@ export class SliderDirective implements AfterViewInit {
         prevButton.addEventListener('click', showPrevtImage);
         nextButton.addEventListener('click', showNextImage);
 
-        this.el.nativeElement.addEventListener('swiped-left', showPrevtImage);
-        this.el.nativeElement.addEventListener('swiped-right', showNextImage);
+        this.el.nativeElement.addEventListener('swiped-left', showNextImage);
+        this.el.nativeElement.addEventListener('swiped-right', showPrevtImage);
 
 
     }
 
 
     ngAfterViewInit() {
-        this.createSlider(this.el.nativeElement);
         this.swipe.swipe(window, document);
+        this.createSlider(this.el.nativeElement);        
     }
 
 
