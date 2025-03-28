@@ -3,8 +3,6 @@ import { Directive, ElementRef, AfterViewInit, HostListener, } from "@angular/co
 
 
 
-
-
 @Directive({
     selector: '[slider]',
     standalone: true,
@@ -23,6 +21,8 @@ export class SliderDirective implements AfterViewInit {
         const slideCount = slides.length;
         let slideIndex = 0;
 
+        let n = 0; //del
+
         function showPrevtImage() {
             slideIndex = (slideIndex - 1 + slideCount) % slideCount;
             slide();
@@ -34,6 +34,7 @@ export class SliderDirective implements AfterViewInit {
         }
 
         function slide() {
+            console.log(n++); //del
             const slideOffset = -slideIndex * 100;
             slider.style.transform = `translateX(${slideOffset}%)`;
         }
