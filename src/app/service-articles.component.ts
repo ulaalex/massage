@@ -31,9 +31,9 @@ export class Content {
 }
 
 
-import * as f from 'swiped-events';
+// import * as f from 'swiped-events';
 
-
+import { swipe } from './11';
 
 
 
@@ -340,8 +340,8 @@ export class ServiceArticlesComponent implements OnInit {
 
 
     
-
-   return f;
+swipe(window, document);
+  //  return f;
   }
 
 }
