@@ -42,13 +42,12 @@ export class SliderDirective implements AfterViewInit {
         slider.addEventListener('swiped-left', showNextImage);
         slider.addEventListener('swiped-right', showPrevtImage);
 
-        // slider.addEventListener("touchmove",);
-        // slider.addEventListener('touchend',);
 
 
-        this.el.nativeElement.addEventListener('touchstart',  (event: { preventDefault: () => void; touches: any[]; }) => {
+
+        slider.addEventListener('touchstart', (event: { touches: any[]; }) => {
             // Предотвращаем стандартное поведение браузера
-            
+            slider.style.transition = "inherit";
 
             // Получаем первое касание (touch)
             let touch = event.touches[0];
@@ -56,29 +55,37 @@ export class SliderDirective implements AfterViewInit {
             // Получаем начальные координаты элемента
             let startX = touch.clientX;
 
+            const sliderWidth = slider.clientWidth;
+            let ticking = false;
             // Добавляем обработчик события touchmove
-            this.el.nativeElement.addEventListener('touchmove', moveElement);
+            this.el.nativeElement.addEventListener('touchmove', moveElement, { passive: true });
 
             // Добавляем обработчик события touchend
-            this.el.nativeElement.addEventListener('touchend', function () {
+            slider.addEventListener('touchend', () => {
+                slider.style.transition = "";
+
                 // Удаляем обработчики событий touchmove и touchend
-                slider.removeEventListener('touchmove', moveElement);
+                this.el.nativeElement.removeEventListener('touchmove', moveElement);
                 const slideOffset = -slideIndex * 100;
                 slider.style.transform = `translateX(${slideOffset}%)`;
-               
+
             });
 
             // Функция для перемещения элемента
             function moveElement(event: { touches: any[]; }) {
-                let touch = event.touches[0];
 
-                // Вычисляем новые координаты элемента
-                let newX = touch.clientX - startX;
 
-                // Устанавливаем новые координаты элемента
-                const slideOffset = -slideIndex * 100 + newX * 100 / slider.clientWidth;
-                console.log(slideOffset);
-                slider.style.transform = `translateX(${slideOffset}%)`;
+               
+                        // Вычисляем новые координаты элемента
+                        let newX = event.touches[0].clientX - startX;
+                        // Устанавливаем новые координаты элемента
+                        const slideOffset = -slideIndex * 100 + newX * 100 / sliderWidth;
+
+                        slider.style.transform = `translateX(${slideOffset}%)`;
+                        ticking = false;
+              
+
+
             }
         });
 
