@@ -31,9 +31,7 @@ export class Content {
 }
 
 
-// import * as f from 'swiped-events';
 
-import { swipe } from './11';
 
 
 
@@ -338,10 +336,6 @@ export class ServiceArticlesComponent implements OnInit {
     //   }
     // });
 
-
-    
-swipe(window, document);
-  //  return f;
   }
 
 }
