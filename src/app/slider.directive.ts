@@ -11,7 +11,7 @@ export class SliderDirective implements AfterViewInit {
 
 
     createSlider(element: { querySelector: (arg0: string) => any; querySelectorAll: (arg0: string) => Iterable<unknown> | ArrayLike<unknown>; }) {
-
+        const hostElement = this.el.nativeElement;
         const slider = element.querySelector('.slider');
         const prevButton = element.querySelector('.prev-button');
         const nextButton = element.querySelector('.next-button');
@@ -45,48 +45,69 @@ export class SliderDirective implements AfterViewInit {
 
 
 
-        slider.addEventListener('touchstart', (event: { touches: any[]; }) => {
-            // Предотвращаем стандартное поведение браузера
+        slider.addEventListener('touchstart', (event: {
+            timeStamp: any; touches: any[];
+        }) => {
+            // Предотвращаем стандартное поведение анимации
             slider.style.transition = "inherit";
-
             // Получаем первое касание (touch)
-            let touch = event.touches[0];
+            const touch = event.touches[0];
 
-            // Получаем начальные координаты элемента
-            let startX = touch.clientX;
+            // Получаем начальные координаты касания
+            const startX = touch.clientX;
 
+            let newX = 0;
+            let isMoveX = true;
+            let firstMoveElement = true;
             const sliderWidth = slider.clientWidth;
-            let ticking = false;
+            const touchStartTime = event.timeStamp;
+
             // Добавляем обработчик события touchmove
-            this.el.nativeElement.addEventListener('touchmove', moveElement, { passive: true });
+            slider.addEventListener('touchmove', moveElement, { passive: false });
 
             // Добавляем обработчик события touchend
-            slider.addEventListener('touchend', () => {
+            slider.addEventListener('touchend', touchEndElement);
+
+
+            function touchEndElement(event: {
+                timeStamp: any; touches: any[];
+            }) {
+                // Возвращаем стандартное поведение анимации
                 slider.style.transition = "";
 
-                // Удаляем обработчики событий touchmove и touchend
-                this.el.nativeElement.removeEventListener('touchmove', moveElement);
-                const slideOffset = -slideIndex * 100;
-                slider.style.transform = `translateX(${slideOffset}%)`;
+                const touchDuration = event.timeStamp - touchStartTime;
 
-            });
+                if (Math.abs(newX) < 0.5 * sliderWidth) {
+                    slide();
+                } else if (Math.abs(newX) > 0.5 * sliderWidth && newX > 0 && touchDuration > 501) {
+                    showPrevtImage();
+                } else if (Math.abs(newX) > 0.5 * sliderWidth && newX < 0 && touchDuration > 501) {
+                    showNextImage();
+                }
+
+                // Удаляем обработчики событий touchmove и touchend
+                slider.removeEventListener('touchmove', moveElement);
+                slider.removeEventListener('touchend', touchEndElement);
+            }
+
 
             // Функция для перемещения элемента
-            function moveElement(event: { touches: any[]; }) {
-
-
-               
-                        // Вычисляем новые координаты элемента
-                        let newX = event.touches[0].clientX - startX;
-                        // Устанавливаем новые координаты элемента
-                        const slideOffset = -slideIndex * 100 + newX * 100 / sliderWidth;
-
-                        slider.style.transform = `translateX(${slideOffset}%)`;
-                        ticking = false;
-              
-
-
+            function moveElement(event: {
+                preventDefault(): unknown; touches: any[];
+            }) {
+                newX = event.touches[0].clientX - startX;
+                if (firstMoveElement && Math.abs(newX) < 10) {
+                    isMoveX = false;
+                }
+                firstMoveElement = false;
+                if (isMoveX) {
+                    event.preventDefault();
+                    const slideOffset = -slideIndex * 100 + newX * 100 / sliderWidth;
+                    slider.style.transform = `translateX(${slideOffset}%)`;
+                }
             }
+
+
         });
 
     }
