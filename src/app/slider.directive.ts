@@ -46,7 +46,7 @@ export class SliderDirective implements AfterViewInit {
 
 
 
-        slider.addEventListener('touchstart', (event: {
+        hostElement.addEventListener('touchstart', (event: {
             timeStamp: any; touches: any[];
         }) => {
             // Предотвращаем стандартное поведение анимации
@@ -64,10 +64,10 @@ export class SliderDirective implements AfterViewInit {
             const touchStartTime = event.timeStamp;
 
             // Добавляем обработчик события touchmove
-            slider.addEventListener('touchmove', moveElement);
+            hostElement.addEventListener('touchmove', moveElement);
 
             // Добавляем обработчик события touchend
-            slider.addEventListener('touchend', touchEndElement);
+            hostElement.addEventListener('touchend', touchEndElement);
 
 
             function touchEndElement(event: {
@@ -87,8 +87,8 @@ export class SliderDirective implements AfterViewInit {
                 }
 
                 // Удаляем обработчики событий touchmove и touchend
-                slider.removeEventListener('touchmove', moveElement);
-                slider.removeEventListener('touchend', touchEndElement);
+                hostElement.removeEventListener('touchmove', moveElement);
+                hostElement.removeEventListener('touchend', touchEndElement);
             }
 
 
