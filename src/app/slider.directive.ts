@@ -11,6 +11,7 @@ export class SliderDirective implements AfterViewInit {
 
 
     createSlider(element: { querySelector: (arg0: string) => any; querySelectorAll: (arg0: string) => Iterable<unknown> | ArrayLike<unknown>; }) {
+
         const hostElement = this.el.nativeElement;
         const slider = element.querySelector('.slider');
         const prevButton = element.querySelector('.prev-button');
@@ -63,7 +64,7 @@ export class SliderDirective implements AfterViewInit {
             const touchStartTime = event.timeStamp;
 
             // Добавляем обработчик события touchmove
-            slider.addEventListener('touchmove', moveElement, { passive: false });
+            slider.addEventListener('touchmove', moveElement);
 
             // Добавляем обработчик события touchend
             slider.addEventListener('touchend', touchEndElement);
@@ -79,9 +80,9 @@ export class SliderDirective implements AfterViewInit {
 
                 if (Math.abs(newX) < 0.5 * sliderWidth) {
                     slide();
-                } else if (Math.abs(newX) > 0.5 * sliderWidth && newX > 0 && touchDuration > 501) {
+                } else if (Math.abs(newX) >= 0.5 * sliderWidth && newX > 0 && touchDuration > 501) {
                     showPrevtImage();
-                } else if (Math.abs(newX) > 0.5 * sliderWidth && newX < 0 && touchDuration > 501) {
+                } else if (Math.abs(newX) >= 0.5 * sliderWidth && newX < 0 && touchDuration > 501) {
                     showNextImage();
                 }
 
@@ -96,7 +97,8 @@ export class SliderDirective implements AfterViewInit {
                 preventDefault(): unknown; touches: any[];
             }) {
                 newX = event.touches[0].clientX - startX;
-                if (firstMoveElement && Math.abs(newX) < 10) {
+
+                if (firstMoveElement && Math.abs(newX) < 5) {
                     isMoveX = false;
                 }
                 firstMoveElement = false;
