@@ -63,10 +63,7 @@ export class SliderDirective implements AfterViewInit {
             const sliderWidth = slider.clientWidth;
             const touchStartTime = event.timeStamp;
 
-            // Добавляем обработчик события touchmove
             hostElement.addEventListener('touchmove', moveElement);
-
-            // Добавляем обработчик события touchend
             hostElement.addEventListener('touchend', touchEndElement);
 
 
